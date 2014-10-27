@@ -79,6 +79,7 @@
     <Compile Include="Assets\NeoNetwork\Http\UnityRequestPerformer.cs" />
     <Compile Include="Assets\NeoNetwork\Http\UnityRequestPerformerFactory.cs" />
     <Compile Include="Assets\NeoNetwork\UriBuilder.cs" />
+    <None Include="Assets\Plugins\strange\extensions\ReadMe.txt" />
     <None Include="Assets\NeoAsync.dll" />
     <None Include="Assets\NeoCollections.dll" />
     <None Include="Assets\NeoLogging.dll" />
