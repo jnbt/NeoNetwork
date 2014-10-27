@@ -1,0 +1,8 @@
+Library
+Assets/UnityTestTools*
+Assets/UnityVS*
+bin
+obj
+*.suo
+*.DotSettings
+Temp
