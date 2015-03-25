@@ -9,8 +9,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("A class library for very simple network operations in Unity3D")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Neopoly GmbH")]
-[assembly: AssemblyProduct("NeoNetwork")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyProduct("Properties")]
+[assembly: AssemblyCopyright("Copyright © 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("faa64a34-9f01-465f-add3-9e5765347c8b")]
+[assembly: Guid("82e56c54-9e20-4c86-886f-79e4e7c8d2dc")]
 
 // Version information for an assembly consists of the following four values:
 //

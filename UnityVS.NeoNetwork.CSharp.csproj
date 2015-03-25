@@ -81,6 +81,7 @@
     <Compile Include="Assets\NeoNetwork\Http\UnityRequestPerformer.cs" />
     <Compile Include="Assets\NeoNetwork\Http\UnityRequestPerformerFactory.cs" />
     <Compile Include="Assets\NeoNetwork\UriBuilder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\GUISystem\4.6.3\UnityEngine.UI.dll" />
     <None Include="Assets\NeoAsync.dll" />
     <None Include="Assets\NeoCollections.dll" />
