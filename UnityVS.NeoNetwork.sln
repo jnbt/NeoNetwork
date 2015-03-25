@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
-MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.NeoNetwork.CSharp.Editor", "UnityVS.NeoNetwork.CSharp.Editor.csproj", "{BB5B29F9-661B-B785-CB16-4FACBCF2539D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.NeoNetwork.CSharp", "UnityVS.NeoNetwork.CSharp.csproj", "{C2B1D519-99D4-0382-BE2F-2B50B8141511}"
