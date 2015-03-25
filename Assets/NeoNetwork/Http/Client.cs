@@ -15,52 +15,61 @@ namespace Neo.Network.Http {
     public Client(){ }
 
     public void Get(string url, FinishCallback callback){
-      Request request = new Request(){
-        Url     = url,
-        Method  = HttpMethod.GET,
-        Cookies = Cookies
-      };
-      perform(request, callback);
+      Get(url, null, null, callback);
     }
 
     public void Get(string url, Dictionary<string,string> parameters, FinishCallback callback){
-      Request request = new Request(){
-        Url        = url,
-        Method     = HttpMethod.GET,
+      Get(url, parameters, null, callback);
+    }
+
+    public void Get(string url, Dictionary<string, string> parameters, Dictionary<string,string> headers, FinishCallback callback) {
+      Request request = new Request() {
+        Url = url,
+        Method = HttpMethod.GET,
         Parameters = parameters,
-        Cookies    = Cookies
+        Cookies = Cookies,
+        Headers = headers
       };
       perform(request, callback);
     }
 
     public void Post(string url, Dictionary<string,string> parameters, FinishCallback callback){
-      Request request = new Request(){
-        Url        = url,
-        Method     = HttpMethod.POST,
+      Post(url, parameters, null, callback);
+    }
+
+    public void Post(string url, Dictionary<string, string> parameters, Dictionary<string,string> headers, FinishCallback callback) {
+      Request request = new Request() {
+        Url = url,
+        Method = HttpMethod.POST,
         Parameters = parameters,
-        Cookies    = Cookies
+        Cookies = Cookies,
+        Headers = headers
       };
       perform(request, callback);
     }
 
     public void Post(string url, byte[] data, FinishCallback callback){
-      Request request = new Request(){
-        Url        = url,
-        Method     = HttpMethod.POST,
-        Body       = data,
-        Cookies    = Cookies
+      Post(url, data, null, callback);
+    }
+
+    public void Post(string url, byte[] data, Dictionary<string,string> headers, FinishCallback callback) {
+      Request request = new Request() {
+        Url = url,
+        Method = HttpMethod.POST,
+        Body = data,
+        Cookies = Cookies,
+        Headers = headers
       };
       perform(request, callback);
     }
 
     private void perform(Request request, FinishCallback callback){
       IRequestPerformer worker = PerformerFactory.Build();
-      logger.Log(request.ToCompleteString);
+      logger.Log(() => request.ToCompleteString());
       worker.Perform(request, (response) => {
-        logger.Log(response.ToCompleteString);
+        logger.Log(() => response.ToCompleteString());
         callback(response);
       });
     }
-
   }
 }
