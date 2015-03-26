@@ -64,9 +64,6 @@
     <Reference Include="NeoLogging">
       <HintPath>Assets\NeoLogging.dll</HintPath>
     </Reference>
-    <Reference Include="strange">
-      <HintPath>Assets\Plugins\strange.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\NeoNetwork\Http\Client.cs" />

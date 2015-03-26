@@ -6,39 +6,48 @@ using Neo.Logging;
 namespace Neo.Network.Http {
   /// <summary>
   /// Perform simple HTTP requests (GET or POST).
-  /// 
+  ///
   /// You must inject a performer, which returns a new request performer, and
   /// a cookie jar to be shared across all requets.
   /// </summary>
   /// <example><![CDATA[
   /// factory = new UnityRequestPerformerFactory();
   /// cookies = new CookieJar();
-  /// client = new Client(){
-  ///   PerformerFactory = factory,
-  ///   Cookies = cookies
-  /// };
-  /// 
+  /// client = new Client(factory, cookies);
+  ///
   /// client.Get("http://www.neopoly.com", response => UnityEngine.Debug.Log(response.Body));
   /// ]]></example>
   public sealed class Client : IClient {
     /// <summary>
     /// Factory to use for the actual request performer
     /// </summary>
-    [Inject]
-    public IRequestPerformerFactory PerformerFactory { get; set; }
+    public IRequestPerformerFactory PerformerFactory { get; private set; }
 
     /// <summary>
     /// The shared cookie jar between all requests of this client
     /// </summary>
-    [Inject]
-    public ICookieJar Cookies { get; set; }
+    public ICookieJar Cookies { get; private set; }
 
-    private Logger logger = new Logger("HttpClient");
+    private readonly Logger logger = new Logger("HttpClient");
 
     /// <summary>
-    /// Instantiate a new HTTP client
+    /// Instantiate a new HTTP client with an own cookie jar
     /// </summary>
-    public Client() { }
+    /// <param name="performerFactory">Factory for IRequestPerformer</param>
+    public Client(IRequestPerformerFactory performerFactory) {
+      this.PerformerFactory = performerFactory;
+      this.Cookies = new CookieJar();
+    }
+
+    /// <summary>
+    /// Instantiate a new HTTP client with a defined cookie jar
+    /// </summary>
+    /// <param name="performerFactory">Factory for IRequestPerformer</param>
+    /// <param name="cookies">A (shared) cookie jar</param>
+    public Client(IRequestPerformerFactory performerFactory, ICookieJar cookies) {
+      this.PerformerFactory = performerFactory;
+      this.Cookies = cookies;
+    }
 
     /// <summary>
     /// Performs a HTTP GET request

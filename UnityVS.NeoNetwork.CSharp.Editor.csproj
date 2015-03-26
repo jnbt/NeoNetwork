@@ -70,9 +70,6 @@
     <Reference Include="NeoLogging">
       <HintPath>Assets\NeoLogging.dll</HintPath>
     </Reference>
-    <Reference Include="strange">
-      <HintPath>Assets\Plugins\strange.dll</HintPath>
-    </Reference>
     <Reference Include="NSubstitute">
       <HintPath>Assets\UnityTestTools\UnitTesting\Editor\NSubstitute\NSubstitute.dll</HintPath>
     </Reference>
@@ -159,7 +156,6 @@
     <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\UnitTestView.cs" />
     <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\UnitTestsRunnerSettings.cs" />
     <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\UnityUnitTest.cs" />
-    <None Include="Assets\Plugins\strange.xml" />
     <None Include="Assets\UnityTestTools\changelog.txt" />
     <None Include="Assets\UnityTestTools\LICENSE.txt" />
     <None Include="\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\GUISystem\4.6.3\Editor\UnityEditor.UI.dll" />
