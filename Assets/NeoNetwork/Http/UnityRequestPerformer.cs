@@ -75,20 +75,16 @@ namespace Neo.Network.Http {
 
     private string buildGetUrl() {
       if(request.Parameters == null || request.Parameters.IsEmpty) return request.Url;
-
-      StringBuilder sb = new StringBuilder(request.Url);
-      if(!request.Url.EndsWith("?")) sb.Append("?");
-      request.Parameters.ForEach((key, value) => {
-        sb.Append(WWW.EscapeURL(key)).Append("=").Append(WWW.EscapeURL(value));
-      });
-      return sb.ToString();
+      UriBuilder b = new UriBuilder(request.Url);
+      b.AddParams(request.Parameters);
+      return b.ToString();
     }
 
     private WWWForm buildPostForm() {
       WWWForm form = new WWWForm();
       request.Parameters.ForEach((key, value) => {
         if(!string.IsNullOrEmpty(key)) {
-          form.AddField(key, (value != null) ? value : "");
+          form.AddField(key, (value != null) ? value : string.Empty);
         }
       });
       return form;

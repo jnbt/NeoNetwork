@@ -129,6 +129,54 @@ namespace Neo.Network {
     }
 
     /// <summary>
+    /// Sets a batch of query parameters
+    /// </summary>
+    /// <param name="parameters">to be set</param>
+    /// <returns>The builder itself</returns>
+    public UriBuilder SetParams(NameValueCollection parameters) {
+      NameValueCollection q = ParseQueryString(Query);
+      parameters.ForEach((k, v) => q.Set(k, v));
+      Query = ToQueryString(q);
+      return this;
+    }
+
+    /// <summary>
+    /// Sets a batch of query parameters
+    /// </summary>
+    /// <param name="parameters">to be set</param>
+    /// <returns>The builder itself</returns>
+    public UriBuilder SetParams(Dictionary<string, string> parameters) {
+      NameValueCollection q = ParseQueryString(Query);
+      parameters.ForEach((k, v) => q.Set(k, v));
+      Query = ToQueryString(q);
+      return this;
+    }
+
+    /// <summary>
+    /// Adds a batch of query parameters
+    /// </summary>
+    /// <param name="parameters">to be set</param>
+    /// <returns>The builder itself</returns>
+    public UriBuilder AddParams(NameValueCollection parameters) {
+      NameValueCollection q = ParseQueryString(Query);
+      q.Add(parameters);
+      Query = ToQueryString(q);
+      return this;
+    }
+
+    /// <summary>
+    /// Adds a batch of query parameters
+    /// </summary>
+    /// <param name="parameters">to be set</param>
+    /// <returns>The builder itself</returns>
+    public UriBuilder AddParams(Dictionary<string, string> parameters) {
+      NameValueCollection q = ParseQueryString(Query);
+      parameters.ForEach((k, v) => q.Add(k, v));
+      Query = ToQueryString(q);
+      return this;
+    }
+
+    /// <summary>
     /// Parses URI string for it's query parameters
     /// </summary>
     /// <param name="s">URI</param>

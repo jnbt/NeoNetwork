@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using Neo.Collections;
 using Neo.Network;
 
@@ -74,6 +74,38 @@ namespace Tests.Neo.Network {
 
       b.Query = null;
       Assert.AreEqual("http://user:pass@www.neopoly.de:8080/the/path/index.html#v", b.ToString());
+    }
+
+    [Test]
+    public void BatchManipulateParametersFromNameValueCollection() {
+      UriBuilder b = new UriBuilder("http://user:pass@www.neopoly.de:8080/the/path/index.html?a=b#v");
+      b.SetParams(new NameValueCollection(){
+        {"a", "c"},
+        {"b", "x"}
+      });
+      Assert.AreEqual("http://user:pass@www.neopoly.de:8080/the/path/index.html?a=c&b=x#v", b.ToString());
+
+      b.AddParams(new NameValueCollection() {
+        {"b", "y"},
+        {"c", "z"}
+      });
+      Assert.AreEqual("http://user:pass@www.neopoly.de:8080/the/path/index.html?a=c&b=x&b=y&c=z#v", b.ToString());
+    }
+
+    [Test]
+    public void BatchManipulateParametersFromDict() {
+      UriBuilder b = new UriBuilder("http://user:pass@www.neopoly.de:8080/the/path/index.html?a=b#v");
+      b.SetParams(new Dictionary<string, string>(){
+        {"a", "c"},
+        {"b", "x"}
+      });
+      Assert.AreEqual("http://user:pass@www.neopoly.de:8080/the/path/index.html?a=c&b=x#v", b.ToString());
+
+      b.AddParams(new Dictionary<string, string>() {
+        {"b", "y"},
+        {"c", "z"}
+      });
+      Assert.AreEqual("http://user:pass@www.neopoly.de:8080/the/path/index.html?a=c&b=x&b=y&c=z#v", b.ToString());
     }
 
     [Test]
