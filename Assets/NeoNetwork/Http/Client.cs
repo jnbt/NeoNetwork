@@ -1,5 +1,3 @@
-using System;
-using System.Text;
 using Neo.Collections;
 using Neo.Logging;
 
@@ -35,8 +33,8 @@ namespace Neo.Network.Http {
     /// </summary>
     /// <param name="performerFactory">Factory for IRequestPerformer</param>
     public Client(IRequestPerformerFactory performerFactory) {
-      this.PerformerFactory = performerFactory;
-      this.Cookies = new CookieJar();
+      PerformerFactory = performerFactory;
+      Cookies = new CookieJar();
     }
 
     /// <summary>
@@ -45,8 +43,8 @@ namespace Neo.Network.Http {
     /// <param name="performerFactory">Factory for IRequestPerformer</param>
     /// <param name="cookies">A (shared) cookie jar</param>
     public Client(IRequestPerformerFactory performerFactory, ICookieJar cookies) {
-      this.PerformerFactory = performerFactory;
-      this.Cookies = cookies;
+      PerformerFactory = performerFactory;
+      Cookies = cookies;
     }
 
     /// <summary>
@@ -76,14 +74,14 @@ namespace Neo.Network.Http {
     /// <param name="headers">to be used for the request</param>
     /// <param name="callback">when finished</param>
     public void Get(string url, Dictionary<string, string> parameters, Dictionary<string, string> headers, FinishCallback callback) {
-      Request request = new Request() {
+      Request request = new Request {
         Url = url,
         Method = HttpMethod.GET,
         Parameters = parameters,
         Cookies = Cookies,
         Headers = headers
       };
-      perform(request, callback);
+      doPerform(request, callback);
     }
 
     /// <summary>
@@ -104,14 +102,14 @@ namespace Neo.Network.Http {
     /// <param name="headers">to be used for the request</param>
     /// <param name="callback">when finished</param>
     public void Post(string url, Dictionary<string, string> parameters, Dictionary<string, string> headers, FinishCallback callback) {
-      Request request = new Request() {
+      Request request = new Request {
         Url = url,
         Method = HttpMethod.POST,
         Parameters = parameters,
         Cookies = Cookies,
         Headers = headers
       };
-      perform(request, callback);
+      doPerform(request, callback);
     }
 
     /// <summary>
@@ -132,20 +130,24 @@ namespace Neo.Network.Http {
     /// <param name="headers">to be used for the request</param>
     /// <param name="callback">when finished</param>
     public void Post(string url, byte[] data, Dictionary<string, string> headers, FinishCallback callback) {
-      Request request = new Request() {
+      Request request = new Request {
         Url = url,
         Method = HttpMethod.POST,
         Body = data,
         Cookies = Cookies,
         Headers = headers
       };
-      perform(request, callback);
+      doPerform(request, callback);
     }
 
-    private void perform(Request request, FinishCallback callback) {
+    public void Perform(Request request, FinishCallback callback) {
+      doPerform(request, callback);
+    }
+
+    private void doPerform(Request request, FinishCallback callback) {
       IRequestPerformer worker = PerformerFactory.Build();
       logger.Log(() => request.ToCompleteString());
-      worker.Perform(request, (response) => {
+      worker.Perform(request, response => {
         logger.Log(() => response.ToCompleteString());
         callback(response);
       });

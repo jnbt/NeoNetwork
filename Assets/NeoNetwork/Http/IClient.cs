@@ -1,4 +1,3 @@
-using System;
 using Neo.Collections;
 
 namespace Neo.Network.Http {
@@ -61,5 +60,11 @@ namespace Neo.Network.Http {
     /// <param name="headers">to be used for the request</param>
     /// <param name="callback">when finished</param>
     void Post(string url, byte[] data, Dictionary<string, string> headers, FinishCallback callback);
+    /// <summary>
+    /// Performs any prebuild HTTP request
+    /// </summary>
+    /// <param name="request">to be performed</param>
+    /// <param name="callback">when finished</param>
+    void Perform(Request request, FinishCallback callback);
   }
 }
