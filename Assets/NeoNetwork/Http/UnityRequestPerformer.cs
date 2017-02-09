@@ -23,9 +23,7 @@ namespace Neo.Network.Http {
 
       WWW www = buildWWW();
       if(www != null) {
-#if !UNITY_WEBGL
-        www.threadPriority = ThreadPriority.Low;
-#endif
+        if(Application.platform != RuntimePlatform.WebGLPlayer) www.threadPriority = ThreadPriority.Low;
         performWWW(www);
       }
     }
