@@ -131,6 +131,7 @@
     <Compile Include="Assets\NeoNetwork\Http\UnityRequestPerformer.cs" />
     <Compile Include="Assets\NeoNetwork\Http\UnityRequestPerformerFactory.cs" />
     <Compile Include="Assets\NeoNetwork\UriBuilder.cs" />
+    <Compile Include="Assets\NeoNetwork\UserAgentBuilder.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\AssertionComponent.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\AssertionException.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\Assertions.cs" />

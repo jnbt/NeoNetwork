@@ -212,6 +212,7 @@
     <Compile Include="Assets\Editor\Tests\Http\TestHttpMethod.cs" />
     <Compile Include="Assets\Editor\Tests\Http\TestResponse.cs" />
     <Compile Include="Assets\Editor\Tests\TestUriBuilder.cs" />
+    <Compile Include="Assets\Editor\Tests\TestUserAgentBuilder.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\Editor\AssertionComponentEditor.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\Editor\AssertionExplorerWindow.cs" />
     <Compile Include="Assets\UnityTestTools\Assertions\Editor\AssertionListRenderer.cs" />
