@@ -55,7 +55,7 @@ namespace Neo.Network.Http {
     }
 
     private WWW buildWWWGet() {
-      return new WWW(buildGetUrl(), null, buildHeaders());
+      return new WWW(request.Url, null, buildHeaders());
     }
 
     private WWW buildWWWPost() {
@@ -72,13 +72,6 @@ namespace Neo.Network.Http {
         request.Headers.ForEach((key, value) => table[key] = value);
       }
       return table;
-    }
-
-    private string buildGetUrl() {
-      if(request.Parameters == null || request.Parameters.IsEmpty) return request.Url;
-      UriBuilder b = new UriBuilder(request.Url);
-      b.AddParams(request.Parameters);
-      return b.ToString();
     }
 
     private WWWForm buildPostForm() {

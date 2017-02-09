@@ -1,6 +1,6 @@
-using NUnit.Framework;
-using Neo.Network.Http;
 using Neo.Collections;
+using Neo.Network.Http;
+using NUnit.Framework;
 
 namespace Tests.Neo.Network.Http {
   [TestFixture]
@@ -10,8 +10,8 @@ namespace Tests.Neo.Network.Http {
       public Request Request { get; private set; }
       public FinishCallback Callback { get; private set; }
       public void Perform(Request request, FinishCallback callback) {
-        this.Request = request;
-        this.Callback = callback;
+        Request = request;
+        Callback = callback;
       }
     }
 
@@ -26,8 +26,8 @@ namespace Tests.Neo.Network.Http {
     private DummyFactory factory;
     private Client client;
 
-    private readonly string url = "http://www.neopoly.com";
-    private readonly Response dummyResponse = new Response(
+    private const string Url = "http://www.neopoly.com";
+    private static readonly Response DummyResponse = new Response(
       "body",
       200, "OK",
       new Dictionary<string, string>(),
@@ -37,7 +37,7 @@ namespace Tests.Neo.Network.Http {
     [SetUp]
     public void SetUp() {
       performer = new DummyPerformer();
-      factory = new DummyFactory() { Performer = performer };
+      factory = new DummyFactory { Performer = performer };
       client = new Client(factory);
     }
 
@@ -49,94 +49,94 @@ namespace Tests.Neo.Network.Http {
     [Test]
     public void GetSimple() {
       Response response = null;
-      client.Get(url, (r) => response = r);
+      client.Get(Url, r => response = r);
 
-      Assert.AreSame(url, performer.Request.Url);
+      Assert.AreSame(Url, performer.Request.Url);
       Assert.IsNull(performer.Request.Parameters);
       Assert.IsNull(performer.Request.Headers);
       Assert.AreEqual(HttpMethod.GET, performer.Request.Method);
-      performer.Callback(dummyResponse);
-      Assert.AreSame(dummyResponse, response);
+      performer.Callback(DummyResponse);
+      Assert.AreSame(DummyResponse, response);
     }
 
     [Test]
     public void GetWithParameters() {
       Response response = null;
-      Dictionary<string, string> p = new Dictionary<string, string>(){
+      Dictionary<string, string> p = new Dictionary<string, string> {
         {"p1", "1"},
         {"p2", "2"}
       };
 
-      client.Get(url, p, (r) => response = r);
-      Assert.AreSame(url, performer.Request.Url);
-      Assert.AreSame(p, performer.Request.Parameters);
+      client.Get(Url, p, r => response = r);
+      Assert.AreEqual(Url + "/?p1=1&p2=2", performer.Request.Url);
+      Assert.IsNull(performer.Request.Parameters);
       Assert.IsNull(performer.Request.Headers);
       Assert.AreEqual(HttpMethod.GET, performer.Request.Method);
-      performer.Callback(dummyResponse);
-      Assert.AreSame(dummyResponse, response);
+      performer.Callback(DummyResponse);
+      Assert.AreSame(DummyResponse, response);
     }
 
     [Test]
     public void GetWithParametersAndHeaders() {
       Response response = null;
-      Dictionary<string, string> p = new Dictionary<string, string>(){
+      Dictionary<string, string> p = new Dictionary<string, string> {
         {"p1", "1"},
         {"p2", "2"}
       };
-      Dictionary<string, string> h = new Dictionary<string, string>(){
+      Dictionary<string, string> h = new Dictionary<string, string> {
         {"h1", "1"},
         {"h2", "2"}
       };
 
-      client.Get(url, p, h, (r) => response = r);
-      Assert.AreSame(url, performer.Request.Url);
-      Assert.AreSame(p, performer.Request.Parameters);
+      client.Get(Url, p, h, r => response = r);
+      Assert.AreEqual(Url + "/?p1=1&p2=2", performer.Request.Url);
+      Assert.IsNull(performer.Request.Parameters);
       Assert.AreSame(h, performer.Request.Headers);
       Assert.AreEqual(HttpMethod.GET, performer.Request.Method);
-      performer.Callback(dummyResponse);
-      Assert.AreSame(dummyResponse, response);
+      performer.Callback(DummyResponse);
+      Assert.AreSame(DummyResponse, response);
     }
 
     [Test]
     public void PostSimple() {
       Response response = null;
-      Dictionary<string, string> p = new Dictionary<string, string>(){
+      Dictionary<string, string> p = new Dictionary<string, string> {
         {"p1", "1"},
         {"p2", "2"}
       };
 
-      client.Post(url, p, (r) => response = r);
+      client.Post(Url, p, r => response = r);
 
-      Assert.AreSame(url, performer.Request.Url);
+      Assert.AreSame(Url, performer.Request.Url);
       Assert.IsNull(performer.Request.Body);
       Assert.AreSame(p, performer.Request.Parameters);
       Assert.IsNull(performer.Request.Headers);
       Assert.AreEqual(HttpMethod.POST, performer.Request.Method);
-      performer.Callback(dummyResponse);
-      Assert.AreSame(dummyResponse, response);
+      performer.Callback(DummyResponse);
+      Assert.AreSame(DummyResponse, response);
     }
 
     [Test]
     public void PostWithHeaders() {
       Response response = null;
-      Dictionary<string, string> p = new Dictionary<string, string>(){
+      Dictionary<string, string> p = new Dictionary<string, string> {
         {"p1", "1"},
         {"p2", "2"}
       };
-      Dictionary<string, string> h = new Dictionary<string, string>(){
+      Dictionary<string, string> h = new Dictionary<string, string> {
         {"h1", "1"},
         {"h2", "2"}
       };
 
-      client.Post(url, p, h, (r) => response = r);
+      client.Post(Url, p, h, r => response = r);
 
-      Assert.AreSame(url, performer.Request.Url);
+      Assert.AreSame(Url, performer.Request.Url);
       Assert.IsNull(performer.Request.Body);
       Assert.AreSame(p, performer.Request.Parameters);
       Assert.AreSame(h, performer.Request.Headers);
       Assert.AreEqual(HttpMethod.POST, performer.Request.Method);
-      performer.Callback(dummyResponse);
-      Assert.AreSame(dummyResponse, response);
+      performer.Callback(DummyResponse);
+      Assert.AreSame(DummyResponse, response);
     }
 
     [Test]
@@ -144,33 +144,33 @@ namespace Tests.Neo.Network.Http {
       Response response = null;
       byte[] data = new byte[0];
 
-      client.Post(url, data, (r) => response = r);
+      client.Post(Url, data, r => response = r);
 
-      Assert.AreSame(url, performer.Request.Url);
+      Assert.AreSame(Url, performer.Request.Url);
       Assert.AreSame(data, performer.Request.Body);
       Assert.IsNull(performer.Request.Headers);
       Assert.AreEqual(HttpMethod.POST, performer.Request.Method);
-      performer.Callback(dummyResponse);
-      Assert.AreSame(dummyResponse, response);
+      performer.Callback(DummyResponse);
+      Assert.AreSame(DummyResponse, response);
     }
 
     [Test]
     public void PostBodyWithHeaders() {
       Response response = null;
       byte[] data = new byte[0];
-      Dictionary<string, string> h = new Dictionary<string, string>(){
+      Dictionary<string, string> h = new Dictionary<string, string> {
         {"h1", "1"},
         {"h2", "2"}
       };
 
-      client.Post(url, data, h, (r) => response = r);
+      client.Post(Url, data, h, r => response = r);
 
-      Assert.AreSame(url, performer.Request.Url);
+      Assert.AreSame(Url, performer.Request.Url);
       Assert.AreSame(data, performer.Request.Body);
       Assert.AreSame(h, performer.Request.Headers);
       Assert.AreEqual(HttpMethod.POST, performer.Request.Method);
-      performer.Callback(dummyResponse);
-      Assert.AreSame(dummyResponse, response);
+      performer.Callback(DummyResponse);
+      Assert.AreSame(DummyResponse, response);
     }
   }
 }

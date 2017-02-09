@@ -74,10 +74,14 @@ namespace Neo.Network.Http {
     /// <param name="headers">to be used for the request</param>
     /// <param name="callback">when finished</param>
     public void Get(string url, Dictionary<string, string> parameters, Dictionary<string, string> headers, FinishCallback callback) {
+      if(parameters != null && !parameters.IsEmpty) {
+        UriBuilder builder = new UriBuilder(url);
+        builder.AddParams(parameters);
+        url = builder.ToString();
+      }
       Request request = new Request {
         Url = url,
         Method = HttpMethod.GET,
-        Parameters = parameters,
         Cookies = Cookies,
         Headers = headers
       };
