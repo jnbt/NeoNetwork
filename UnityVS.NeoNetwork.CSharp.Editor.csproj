@@ -22,7 +22,7 @@
     <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>DEBUG;TRACE;UNITY_4_6_3;UNITY_4_6;UNITY_STANDALONE_OSX;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_IL2CPP;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;UNITY5_SCRIPTING_IN_UNITY4;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_GAMECENTER;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX;UNITY_PRO_LICENSE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_VIDEO;ENABLE_VR;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,7 +30,7 @@
     <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>TRACE;UNITY_4_6_3;UNITY_4_6;UNITY_STANDALONE_OSX;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_IL2CPP;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;UNITY5_SCRIPTING_IN_UNITY4;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_GAMECENTER;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX;UNITY_PRO_LICENSE</DefineConstants>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_VIDEO;ENABLE_VR;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -46,20 +46,140 @@
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEditor.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>Library\UnityAssemblies\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.EditorTestsRunner">
+      <HintPath>Library\UnityAssemblies\UnityEditor.EditorTestsRunner.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\UnityAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.PlaymodeTestsRunner">
+      <HintPath>Library\UnityAssemblies\UnityEditor.PlaymodeTestsRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PlaymodeTestsRunner">
+      <HintPath>Library\UnityAssemblies\UnityEngine.PlaymodeTestsRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TreeEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.TreeEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.HoloLens">
+      <HintPath>Library\UnityAssemblies\UnityEditor.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HoloLens">
+      <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.VR">
+      <HintPath>Library\UnityAssemblies\UnityEditor.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VR">
+      <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.Graphs">
       <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Android.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Android.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WebGL.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.WebGL.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.OSXStandalone.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.OSXStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Advertisements">
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\Advertisements\Editor\UnityEditor.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\Advertisements\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\EditorTestsRunner\Editor\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.EditorTestsRunner">
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\EditorTestsRunner\Editor\UnityEditor.EditorTestsRunner.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\GUISystem\4.6.3\Editor\UnityEditor.UI.dll</HintPath>
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\GUISystem\Editor\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\GUISystem\4.6.3\UnityEngine.UI.dll</HintPath>
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\GUISystem\Standalone\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Networking">
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\Networking\Editor\UnityEditor.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\Networking\Standalone\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\Networking\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.PlaymodeTestsRunner">
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\PlaymodeTestsRunner\Editor\UnityEditor.PlaymodeTestsRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PlaymodeTestsRunner">
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\PlaymodeTestsRunner\UnityEngine.PlaymodeTestsRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TreeEditor">
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\TreeEditor\Editor\UnityEditor.TreeEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Analytics">
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\UnityAnalytics\Editor\UnityEditor.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\UnityAnalytics\UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.HoloLens">
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\UnityHoloLens\Editor\UnityEditor.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HoloLens">
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\UnityHoloLens\Runtime\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HoloLens">
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\UnityHoloLens\RuntimeEditor\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\UnityPurchasing\UnityEngine.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.VR">
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\UnityVR\Editor\UnityEditor.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VR">
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\UnityVR\Runtime\UnityEngine.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VR">
+      <HintPath>\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\UnityVR\RuntimeEditor\UnityEngine.VR.dll</HintPath>
     </Reference>
     <Reference Include="NeoAsync">
       <HintPath>Assets\NeoAsync.dll</HintPath>
@@ -72,21 +192,6 @@
     </Reference>
     <Reference Include="NSubstitute">
       <HintPath>Assets\UnityTestTools\UnitTesting\Editor\NSubstitute\NSubstitute.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Cecil">
-      <HintPath>Assets\UnityTestTools\UnitTesting\Editor\NUnit\Libs\Mono.Cecil.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Cecil.Mdb">
-      <HintPath>Assets\UnityTestTools\UnitTesting\Editor\NUnit\Libs\Mono.Cecil.Mdb.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.core">
-      <HintPath>Assets\UnityTestTools\UnitTesting\Editor\NUnit\Libs\nunit.core.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.core.interfaces">
-      <HintPath>Assets\UnityTestTools\UnitTesting\Editor\NUnit\Libs\nunit.core.interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>Assets\UnityTestTools\UnitTesting\Editor\NUnit\Libs\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
@@ -125,7 +230,11 @@
     <Compile Include="Assets\UnityTestTools\Common\Editor\ResultWriter\StackTraceFilter.cs" />
     <Compile Include="Assets\UnityTestTools\Common\Editor\ResultWriter\XmlResultWriter.cs" />
     <Compile Include="Assets\UnityTestTools\Common\Editor\Styles.cs" />
+    <Compile Include="Assets\UnityTestTools\Common\Editor\TestFilterSettings.cs" />
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\Batch.cs" />
+    <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\EditorReferencesUtil.cs" />
+    <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\GuiHelper.cs" />
+    <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\IntegrationTestsHierarchyAnnotation.cs" />
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\IntegrationTestsRunnerSettings.cs" />
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\IntegrationTestsRunnerWindow.cs" />
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\PlatformRunner\NetworkResultsReceiver.cs" />
@@ -137,34 +246,21 @@
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\Renderer\IntegrationTestGroupLine.cs" />
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\Renderer\IntegrationTestLine.cs" />
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\Renderer\IntegrationTestRendererBase.cs" />
+    <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\Renderer\RenderingOptions.cs" />
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\TestComponentEditor.cs" />
-    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\Batch.cs" />
-    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\NUnit\Renderer\GroupLine.cs" />
-    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\NUnit\Renderer\RenderingOptions.cs" />
-    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\NUnit\Renderer\TestLine.cs" />
-    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\NUnit\Renderer\UnitTestRendererLine.cs" />
-    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\BackgroundRunner.cs" />
-    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\GuiHelper.cs" />
-    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\ITestRunnerCallback.cs" />
-    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\IUnitTestEngine.cs" />
-    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\NUnitExtensions.cs" />
-    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\NUnitTestEngine.cs" />
-    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\TestRunner.cs" />
-    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\TestRunnerCallbackList.cs" />
-    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\UnitTestInfo.cs" />
-    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\UnitTestResult.cs" />
-    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\UnitTestView.cs" />
-    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\UnitTestsRunnerSettings.cs" />
-    <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\UnityUnitTest.cs" />
     <None Include="Assets\UnityTestTools\changelog.txt" />
     <None Include="Assets\UnityTestTools\LICENSE.txt" />
-    <None Include="\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\GUISystem\4.6.3\Editor\UnityEditor.UI.dll" />
+    <None Include="\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\Advertisements\Editor\UnityEditor.Advertisements.dll" />
+    <None Include="\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\EditorTestsRunner\Editor\nunit.framework.dll" />
+    <None Include="\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\EditorTestsRunner\Editor\UnityEditor.EditorTestsRunner.dll" />
+    <None Include="\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\GUISystem\Editor\UnityEditor.UI.dll" />
+    <None Include="\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\Networking\Editor\UnityEditor.Networking.dll" />
+    <None Include="\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\PlaymodeTestsRunner\Editor\UnityEditor.PlaymodeTestsRunner.dll" />
+    <None Include="\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\TreeEditor\Editor\UnityEditor.TreeEditor.dll" />
+    <None Include="\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\UnityAnalytics\Editor\UnityEditor.Analytics.dll" />
+    <None Include="\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\UnityHoloLens\Editor\UnityEditor.HoloLens.dll" />
+    <None Include="\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\UnityVR\Editor\UnityEditor.VR.dll" />
     <None Include="Assets\UnityTestTools\UnitTesting\Editor\NSubstitute\NSubstitute.dll" />
-    <None Include="Assets\UnityTestTools\UnitTesting\Editor\NUnit\Libs\Mono.Cecil.dll" />
-    <None Include="Assets\UnityTestTools\UnitTesting\Editor\NUnit\Libs\Mono.Cecil.Mdb.dll" />
-    <None Include="Assets\UnityTestTools\UnitTesting\Editor\NUnit\Libs\nunit.core.dll" />
-    <None Include="Assets\UnityTestTools\UnitTesting\Editor\NUnit\Libs\nunit.core.interfaces.dll" />
-    <None Include="Assets\UnityTestTools\UnitTesting\Editor\NUnit\Libs\nunit.framework.dll" />
     <None Include="Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll" />
     <None Include="Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Messaging.dll" />
   </ItemGroup>
