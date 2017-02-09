@@ -33,7 +33,7 @@ namespace Neo.Network.Http {
     public ICookieJar Cookies { get; set; }
 
     /// <summary>
-    /// Instantiate a new reponse
+    /// Instantiate a new response
     /// </summary>
     /// <param name="body">of the HTTP call</param>
     /// <param name="status">of the HTTP call</param>
@@ -49,7 +49,7 @@ namespace Neo.Network.Http {
     }
 
     /// <summary>
-    /// True if the call was a success (200)
+    /// True if the call was a success [200-300]
     /// </summary>
     public bool IsSuccess {
       get {

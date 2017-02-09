@@ -1,16 +1,14 @@
 using UnityEngine;
 using Neo.Async;
 using Neo.Collections;
+using UnityEngine.Networking;
 
 namespace Neo.Network.Http {
   /// <summary>
-  /// A HTTP request performer using Unity's build in WWW class
+  /// A HTTP request performer using Unity's build-in UnityWebRequest class
   /// </summary>
   public sealed class UnityRequestPerformer : IRequestPerformer {
     private const string CookieHeaderField = "Cookie";
-
-    private Request request;
-    private FinishCallback callback;
 
     /// <summary>
     /// Perform the actual HTTP request
@@ -18,68 +16,55 @@ namespace Neo.Network.Http {
     /// <param name="request">to perform</param>
     /// <param name="callback">to call once finished</param>
     public void Perform(Request request, FinishCallback callback) {
-      this.request = request;
-      this.callback = callback;
-
-      WWW www = buildWWW();
-      if(www != null) {
-        if(Application.platform != RuntimePlatform.WebGLPlayer) www.threadPriority = ThreadPriority.Low;
-        performWWW(www);
-      }
+      UnityWebRequest www = buildUnityWebRequest(request);
+      if(www != null) startPerformRequest(www, request, callback);
     }
 
-    private void performWWW(WWW www) {
+    private static void startPerformRequest(UnityWebRequest www, Request request, FinishCallback callback) {
       CoroutineStarter.Instance.Add(waitForRequest(www, request, callback));
     }
 
-    private System.Collections.IEnumerator waitForRequest(WWW www, Request request, FinishCallback callback) {
+    private static System.Collections.IEnumerator waitForRequest(UnityWebRequest www, Request request, FinishCallback callback) {
       using(www) {
-        yield return www;
+        yield return www.Send();
 
         if(string.IsNullOrEmpty(www.error)) {
-          Dictionary<string, string> headers = new Dictionary<string, string>(www.responseHeaders);
+          Dictionary<string, string> headers = new Dictionary<string, string>(www.GetResponseHeaders());
           if(request.Cookies != null) request.Cookies.Update(headers);
-          callback(new Response(www.text, 200, "OK", headers, request.Cookies));
+          int code = (int) www.responseCode;
+          callback(new Response(www.downloadHandler.text, code, StatusCodes.MessageFromCode(code), headers, request.Cookies));
         } else {
           callback(Response.BuildError(www.error));
         }
       }
     }
 
-    private WWW buildWWW() {
-      if(request.Method == HttpMethod.GET) return buildWWWGet();
-      if(request.Method == HttpMethod.POST) return buildWWWPost();
-      return null;
+    private static UnityWebRequest buildUnityWebRequest(Request request) {
+      UnityWebRequest www = request.Method == HttpMethod.GET ? buildGetRequest(request) : buildPostRequest(request);
+      addHeaders(www, request);
+      return www;
     }
 
-    private WWW buildWWWGet() {
-      return new WWW(request.Url, null, buildHeaders());
+    private static UnityWebRequest buildGetRequest(Request request) {
+      return UnityWebRequest.Get(request.Url);
     }
 
-    private WWW buildWWWPost() {
-      if(request.Body == null) return new WWW(request.Url, buildPostForm().data, buildHeaders());
-      else return new WWW(request.Url, request.Body, buildHeaders());
+    private static UnityWebRequest buildPostRequest(Request request) {
+      if(request.Body == null) return UnityWebRequest.Post(request.Url, request.Parameters);
+      UnityWebRequest www = UnityWebRequest.Put(request.Url, request.Body);
+      www.method = request.Method.ToString();
+      return www;
     }
 
-    private System.Collections.Generic.Dictionary<string, string> buildHeaders() {
-      System.Collections.Generic.Dictionary<string, string> table = new System.Collections.Generic.Dictionary<string, string>();
-      if(request.Cookies != null && !request.Cookies.IsEmpty) {
-        table[CookieHeaderField] = request.Cookies.ToString();
+    private static void addHeaders(UnityWebRequest www, Request request) {
+      if(request.Cookies != null && !request.Cookies.IsEmpty && !isWebGL) {
+        www.SetRequestHeader(CookieHeaderField, request.Cookies.ToString());
       }
       if(request.Headers != null) {
-        request.Headers.ForEach((key, value) => table[key] = value);
+        request.Headers.ForEach(www.SetRequestHeader);
       }
-      return table;
     }
 
-    private WWWForm buildPostForm() {
-      WWWForm form = new WWWForm();
-      request.Parameters.ForEach((key, value) => {
-        if(!string.IsNullOrEmpty(key)) {
-          form.AddField(key, value ?? string.Empty);
-        }
-      });
-      return form;
-    }
+    private static bool isWebGL { get { return Application.platform == RuntimePlatform.WebGLPlayer; } }
   }
 }
