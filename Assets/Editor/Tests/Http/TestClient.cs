@@ -1,9 +1,8 @@
 using NUnit.Framework;
-using System.Net;
 using Neo.Network.Http;
 using Neo.Collections;
 
-namespace Tests.Neo.Neowork.Http {
+namespace Tests.Neo.Network.Http {
   [TestFixture]
   public class TestClient {
 
@@ -28,7 +27,12 @@ namespace Tests.Neo.Neowork.Http {
     private Client client;
 
     private readonly string url = "http://www.neopoly.com";
-    private readonly Response dummyResponse = new Response("body", HttpStatusCode.OK, "message", null);
+    private readonly Response dummyResponse = new Response(
+      "body",
+      200, "OK",
+      new Dictionary<string, string>(),
+      null
+    );
 
     [SetUp]
     public void SetUp() {
@@ -158,7 +162,6 @@ namespace Tests.Neo.Neowork.Http {
         {"h1", "1"},
         {"h2", "2"}
       };
-
 
       client.Post(url, data, h, (r) => response = r);
 

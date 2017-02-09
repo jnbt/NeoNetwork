@@ -1,6 +1,6 @@
 using System;
 using System.Text;
-using System.Net;
+using Neo.Collections;
 
 namespace Neo.Network.Http {
   /// <summary>
@@ -18,11 +18,15 @@ namespace Neo.Network.Http {
     /// <summary>
     /// The status code as returned from the server
     /// </summary>
-    public HttpStatusCode Status { get; set; }
+    public int Status { get; set; }
     /// <summary>
     /// The HTTP message as returned from the server
     /// </summary>
     public string Message { get; set; }
+    /// <summary>
+    /// The HTTP headers as returned from the server
+    /// </summary>
+    public Dictionary<string, string> Headers { get; set; }
     /// <summary>
     /// The (updated) cookies for the HTTP communication
     /// </summary>
@@ -31,15 +35,17 @@ namespace Neo.Network.Http {
     /// <summary>
     /// Instantiate a new reponse
     /// </summary>
-    /// <param name="Body">of the HTTP call</param>
-    /// <param name="Status">of the HTTP call</param>
-    /// <param name="Message">of the HTTP call</param>
-    /// <param name="Cookies">updated cookies for the HTTP communication</param>
-    public Response(string Body, HttpStatusCode Status, string Message, ICookieJar Cookies) {
-      this.Body = Body;
-      this.Status = Status;
-      this.Message = Message;
-      this.Cookies = Cookies;
+    /// <param name="body">of the HTTP call</param>
+    /// <param name="status">of the HTTP call</param>
+    /// <param name="message">of the HTTP call</param>
+    /// <param name="headers">of the HTTP call</param>
+    /// <param name="cookies">updated cookies for the HTTP communication</param>
+    public Response(string body, int status, string message, Dictionary<string, string> headers, ICookieJar cookies) {
+      Body = body;
+      Status = status;
+      Message = message;
+      Headers = headers;
+      Cookies = cookies;
     }
 
     /// <summary>
@@ -47,7 +53,7 @@ namespace Neo.Network.Http {
     /// </summary>
     public bool IsSuccess {
       get {
-        return this.Status == HttpStatusCode.OK;
+        return Status >= 200 && Status < 300;
       }
     }
 
@@ -62,8 +68,16 @@ namespace Neo.Network.Http {
         .Append(Status.ToString());
 
       if(Message != null) sb.Append(" message: ").Append(Message);
-      if(Cookies != null) sb.Append(" cookies: ").Append(Cookies.ToString());
+
       if(Body != null) sb.Append(" data: ").Append(Body.Substring(0, Math.Min(Body.Length, 200)));
+
+      if(Cookies != null) sb.Append(" cookies: ").Append(Cookies.ToString());
+
+      if(Headers != null) {
+        sb.Append(" headers: ");
+        Headers.ForEach((key, value) => sb.Append(key).Append("=").Append(value).Append(" "));
+      }
+
       sb.Append(" >");
 
       return sb.ToString();
@@ -74,8 +88,8 @@ namespace Neo.Network.Http {
     /// </summary>
     /// <param name="message">the error to describe</param>
     /// <returns>An error response</returns>
-    static public Response BuildError(string message) {
-      return new Response(string.Empty, HttpStatusCode.Conflict, message, new CookieJar());
+    public static Response BuildError(string message) {
+      return new Response(string.Empty, 409, message, new Dictionary<string, string>(), new CookieJar());
     }
   }
 }

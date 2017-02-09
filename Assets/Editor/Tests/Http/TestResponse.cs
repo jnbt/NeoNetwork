@@ -1,36 +1,39 @@
+using Neo.Collections;
 using NUnit.Framework;
-using System.Net;
 using Neo.Network.Http;
 
-namespace Tests.Neo.Neowork.Http{
+namespace Tests.Neo.Network.Http {
   [TestFixture]
-  public class TestResponse{
-    private CookieJar jar = new CookieJar();
+  public class TestResponse {
+    private readonly CookieJar jar = new CookieJar();
+    private readonly Dictionary<string,string> headers = new Dictionary<string, string>();
 
     [Test]
-    public void Constructor(){
-      Response resp = new Response("body", HttpStatusCode.OK, "message", jar);
+    public void Constructor() {
+      Response resp = new Response("body", 200, "OK", headers, jar);
       Assert.AreEqual("body", resp.Body);
-      Assert.AreEqual("message", resp.Message);
-      Assert.AreEqual(HttpStatusCode.OK, resp.Status);
+      Assert.AreEqual("OK", resp.Message);
+      Assert.AreEqual(200, resp.Status);
+      Assert.AreSame(headers, resp.Headers);
       Assert.AreSame(jar, resp.Cookies);
     }
 
     [Test]
-    public void IsSuccess(){
-      Response resp = new Response("body", HttpStatusCode.OK, "message", jar);
+    public void IsSuccess() {
+      Response resp = new Response("body", 200, "OK", headers, jar);
       Assert.IsTrue(resp.IsSuccess);
-      Response other = new Response("body", HttpStatusCode.NotFound, "message", jar);
+      Response other = new Response("body", 404, "NotFound", headers, jar);
       Assert.IsFalse(other.IsSuccess);
     }
 
     [Test]
-    public void BuildError(){
+    public void BuildError() {
       Response resp =  Response.BuildError("message");
       Assert.AreEqual("", resp.Body);
       Assert.AreEqual("message", resp.Message);
-      Assert.AreEqual(HttpStatusCode.Conflict, resp.Status);
+      Assert.AreEqual(409, resp.Status);
       Assert.NotNull(resp.Cookies);
+      Assert.IsTrue(resp.Headers.IsEmpty);
     }
   }
 }

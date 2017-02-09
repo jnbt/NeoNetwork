@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Text;
 using System.Net;
 using Neo.Async;
+using Neo.Collections;
 
 namespace Neo.Network.Http {
   /// <summary>
@@ -38,9 +39,9 @@ namespace Neo.Network.Http {
         yield return www;
 
         if(string.IsNullOrEmpty(www.error)) {
-          if(request.Cookies != null) request.Cookies.Update(www.responseHeaders);
-
-          callback(new Response(www.text, HttpStatusCode.OK, "OK", request.Cookies));
+          Dictionary<string, string> headers = new Dictionary<string, string>(www.responseHeaders);
+          if(request.Cookies != null) request.Cookies.Update(headers);
+          callback(new Response(www.text, 200, "OK", headers, request.Cookies));
         } else {
           callback(Response.BuildError(www.error));
         }

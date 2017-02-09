@@ -2,27 +2,25 @@ using NUnit.Framework;
 using Neo.Collections;
 using Neo.Network.Http;
 
-
-namespace Tests.Neo.Neowork.Http{
+namespace Tests.Neo.Network.Http {
   [TestFixture]
-  public class TestCookieJar{
+  public class TestCookieJar {
 
     [Test]
-    public void StartsEmpty(){
+    public void StartsEmpty() {
       CookieJar jar = new CookieJar();
       Assert.IsTrue(jar.IsEmpty);
     }
 
     [Test]
-    public void UpdateFromAllHeaderVariants(){
+    public void UpdateFromAllHeaderVariants() {
       CookieJar jar = new CookieJar();
-      System.Collections.Generic.Dictionary<string,string> headers =
-        new System.Collections.Generic.Dictionary<string,string>(){
-          {"Set-Cookie", "A1=B1; C1=D1 "},
-          {"SET-COOKIE", "A2=B2;C2=D2"},
-          {"set-cookie", "A3=B3"},
-          {"Set-cookie", "A4=B4; C4=D4 "},
-        };
+      Dictionary<string,string> headers = new Dictionary<string, string> {
+        {"Set-Cookie", "A1=B1; C1=D1 "},
+        {"SET-COOKIE", "A2=B2;C2=D2"},
+        {"set-cookie", "A3=B3"},
+        {"Set-cookie", "A4=B4; C4=D4 "},
+      };
       jar.Update(headers);
       Assert.AreEqual(7, jar.Store.Count);
       Assert.AreEqual("B1", jar.Store["A1"]);
@@ -34,7 +32,7 @@ namespace Tests.Neo.Neowork.Http{
     }
 
     [Test]
-    public void ClearAndIsEmpty(){
+    public void ClearAndIsEmpty() {
       CookieJar jar = new CookieJar();
       jar.Store["a"] = "b";
       Assert.IsFalse(jar.IsEmpty);
@@ -43,7 +41,7 @@ namespace Tests.Neo.Neowork.Http{
     }
 
     [Test]
-    public void BuildWithToString(){
+    public void BuildWithToString() {
       CookieJar jar = new CookieJar();
       jar.Store["A1"] = "B1";
       jar.Store[" C1"] = "D1";
@@ -51,6 +49,5 @@ namespace Tests.Neo.Neowork.Http{
 
       Assert.AreEqual("A1=B1; C1=D1; C4 = D4 ", jar.ToString());
     }
-
   }
 }

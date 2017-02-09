@@ -27,7 +27,7 @@ namespace Neo.Network.Http {
     /// a Dictionary.
     /// </remarks>
     /// <param name="headers">raw HTTP headers</param>
-    public void Update(System.Collections.Generic.Dictionary<string, string> headers) {
+    public void Update(Dictionary<string, string> headers) {
       extractCookie(headers);
     }
 
@@ -63,20 +63,18 @@ namespace Neo.Network.Http {
       return sb.ToString();
     }
 
-    private void extractCookie(System.Collections.Generic.Dictionary<string, string> headers) {
-      for(int i = 0, imax = SET_COOKIE.Length; i < imax; i++) {
-        string field = SET_COOKIE[i];
-        if(headers.ContainsKey(field) && !string.IsNullOrEmpty(headers[field])) {
-          string[] parts = headers[field].Split(COOKIE_SPLITTER);
-          for(int j = 0, jmax = parts.Length; j < jmax; j++) {
-            string part = parts[j];
-            int markerIndex = part.IndexOf(COOKIE_VALUE_MARKER);
-            if(markerIndex > 0) {
-              string name = part.Substring(0, markerIndex);
-              string val = part.Substring(markerIndex + 1, part.Length - markerIndex - 1);
-              Store[name] = val;
-            }
-          }
+    private void extractCookie(Dictionary<string, string> headers) {
+      for(int i = 0, imax = SetCookie.Length; i < imax; i++) {
+        string field = SetCookie[i];
+        if(!headers.ContainsKey(field) || string.IsNullOrEmpty(headers[field])) continue;
+        string[] parts = headers[field].Split(CookieSplitter);
+        for(int j = 0, jmax = parts.Length; j < jmax; j++) {
+          string part = parts[j];
+          int markerIndex = part.IndexOf(CookieValueMarker);
+          if(markerIndex <= 0) continue;
+          string name = part.Substring(0, markerIndex);
+          string val = part.Substring(markerIndex + 1, part.Length - markerIndex - 1);
+          Store[name] = val;
         }
       }
     }

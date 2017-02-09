@@ -1,3 +1,5 @@
+using Neo.Collections;
+
 namespace Neo.Network.Http {
   /// <summary>
   /// Should hold end extract the cookies for HTTP communication
@@ -8,7 +10,7 @@ namespace Neo.Network.Http {
     /// from it's WWW class
     /// </summary>
     /// <param name="headers">raw HTTP headers</param>
-    void Update(System.Collections.Generic.Dictionary<string, string> headers);
+    void Update(Dictionary<string, string> headers);
     /// <summary>
     /// True if no cookies are set
     /// </summary>
