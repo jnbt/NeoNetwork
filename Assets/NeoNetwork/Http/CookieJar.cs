@@ -1,4 +1,3 @@
-using System;
 using System.Text;
 using Neo.Collections;
 
@@ -8,9 +7,9 @@ namespace Neo.Network.Http {
   /// from raw HTTP response header fields.
   /// </summary>
   public sealed class CookieJar : ICookieJar {
-    private static readonly string[] SET_COOKIE = new string[] { "SET-COOKIE", "set-cookie", "Set-Cookie", "Set-cookie" };
-    private const char COOKIE_SPLITTER = ';';
-    private const char COOKIE_VALUE_MARKER = '=';
+    private static readonly string[] SetCookie = { "SET-COOKIE", "set-cookie", "Set-Cookie", "Set-cookie" };
+    private const char CookieSplitter = ';';
+    private const char CookieValueMarker = '=';
 
     /// <summary>
     /// Holds all current cookies
@@ -56,8 +55,8 @@ namespace Neo.Network.Http {
       StringBuilder sb = new StringBuilder();
       int i = 0;
       Store.ForEach((key, value) => {
-        if(i > 0) sb.Append(COOKIE_SPLITTER);
-        sb.Append(key).Append(COOKIE_VALUE_MARKER).Append(value);
+        if(i > 0) sb.Append(CookieSplitter);
+        sb.Append(key).Append(CookieValueMarker).Append(value);
         i++;
       });
       return sb.ToString();

@@ -6,15 +6,14 @@ namespace Neo.Network {
   /// <summary>
   /// Helper class to encode and combine parameters into URIs
   /// </summary>
-  public class UriBuilder {
-    private const char QUERY_ASSIGNMENT = '=';
-    private const char QUERY_SEPARATOR = '&';
-    private const char QUERY_INTRO = '?';
-    private const string S_QUERY_ASSIGNMENT = "=";
-    private const string S_QUERY_SEPARATOR = "&";
-    private const string S_QUERY_INTRO = "?";
+  public sealed class UriBuilder {
+    private const char QueryAssignment = '=';
+    private const char QuerySeparator = '&';
+    private const string SQueryAssignment = "=";
+    private const string SQuerySeparator = "&";
+    private const string SQueryIntro = "?";
 
-    private System.UriBuilder builder;
+    private readonly System.UriBuilder builder;
 
     /// <summary>
     /// Instantiate a fresh instance
@@ -184,11 +183,11 @@ namespace Neo.Network {
     public static NameValueCollection ParseQueryString(string s) {
       NameValueCollection nvc = new NameValueCollection();
       // remove anything other than query string from url
-      if(s.Contains(S_QUERY_INTRO)) {
-        s = s.Substring(s.IndexOf(S_QUERY_INTRO) + 1);
+      if(s.Contains(SQueryIntro)) {
+        s = s.Substring(s.IndexOf(SQueryIntro) + 1);
       }
-      s.Split(QUERY_SEPARATOR).ForEach(vp => {
-        string[] singlePair = vp.Split(QUERY_ASSIGNMENT);
+      s.Split(QuerySeparator).ForEach(vp => {
+        string[] singlePair = vp.Split(QueryAssignment);
         if(singlePair.Length == 2) {
           nvc.Add(singlePair[0], UrlUnescape(singlePair[1]));
         } else {
@@ -208,17 +207,17 @@ namespace Neo.Network {
       if(nvc.IsEmpty) return string.Empty;
       StringBuilder sb = new StringBuilder();
       nvc.ForEach((key, val, i) => {
-        if(i > 0) sb.Append(S_QUERY_SEPARATOR);
+        if(i > 0) sb.Append(SQuerySeparator);
 
         if(!string.IsNullOrEmpty(val)) {
           string[] vs = val.Split(',');
           if(vs.Length > 1) {
             vs.ForEach((v, j) => {
-              if(j > 0) sb.Append(S_QUERY_SEPARATOR);
-              sb.Append(key).Append(S_QUERY_ASSIGNMENT).Append(UrlEscape(v));
+              if(j > 0) sb.Append(SQuerySeparator);
+              sb.Append(key).Append(SQueryAssignment).Append(UrlEscape(v));
             });
           } else {
-            sb.Append(key).Append(S_QUERY_ASSIGNMENT).Append(UrlEscape(val));
+            sb.Append(key).Append(SQueryAssignment).Append(UrlEscape(val));
           }
         }
       });

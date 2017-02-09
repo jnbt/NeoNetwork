@@ -45,14 +45,14 @@ namespace Neo.Network.Http {
       if(Body != null) {
         sb.Append(" [with-raw-body-bytes] ");
       } else if(Parameters != null) {
-        Parameters.ForEach((key, value) => sb.Append(key).Append("=").Append(value));
+        Parameters.ForEach((key, value) => sb.Append(key).Append("=").Append(value).Append(" "));
       }
 
       if(Cookies != null) sb.Append(" cookies: ").Append(Cookies.ToString());
 
       if(Headers != null) {
         sb.Append(" headers: ");
-        Headers.ForEach((key, value) => sb.Append(key).Append("=").Append(value));
+        Headers.ForEach((key, value) => sb.Append(key).Append("=").Append(value).Append(" "));
       }
 
       sb.Append(" >");

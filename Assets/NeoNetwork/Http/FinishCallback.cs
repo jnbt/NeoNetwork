@@ -1,5 +1,3 @@
-using System;
-
 namespace Neo.Network.Http {
   /// <summary>
   /// Delegate for finished HTTP requests

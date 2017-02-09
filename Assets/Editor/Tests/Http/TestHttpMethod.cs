@@ -1,18 +1,17 @@
 using NUnit.Framework;
-using System.Net;
 using Neo.Network.Http;
 
-namespace Tests.Neo.Neowork.Http{
+namespace Tests.Neo.Network.Http {
   [TestFixture]
-  public class TestHttpMethod{
+  public class TestHttpMethod {
 
     [Test]
-    public void Get(){
+    public void Get() {
       Assert.AreEqual("GET", HttpMethod.GET.ToString());
     }
 
     [Test]
-    public void Post(){
+    public void Post() {
       Assert.AreEqual("POST", HttpMethod.POST.ToString());
     }
   }

@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Text;
-using System.Net;
 using Neo.Async;
 using Neo.Collections;
 
@@ -8,8 +6,8 @@ namespace Neo.Network.Http {
   /// <summary>
   /// A HTTP request performer using Unity's build in WWW class
   /// </summary>
-  public class UnityRequestPerformer : IRequestPerformer {
-    private const string COOKIE_HEADER_FIELD = "Cookie";
+  public sealed class UnityRequestPerformer : IRequestPerformer {
+    private const string CookieHeaderField = "Cookie";
 
     private Request request;
     private FinishCallback callback;
@@ -25,7 +23,9 @@ namespace Neo.Network.Http {
 
       WWW www = buildWWW();
       if(www != null) {
+#if !UNITY_WEBGL
         www.threadPriority = ThreadPriority.Low;
+#endif
         performWWW(www);
       }
     }
@@ -66,7 +66,7 @@ namespace Neo.Network.Http {
     private System.Collections.Generic.Dictionary<string, string> buildHeaders() {
       System.Collections.Generic.Dictionary<string, string> table = new System.Collections.Generic.Dictionary<string, string>();
       if(request.Cookies != null && !request.Cookies.IsEmpty) {
-        table[COOKIE_HEADER_FIELD] = request.Cookies.ToString();
+        table[CookieHeaderField] = request.Cookies.ToString();
       }
       if(request.Headers != null) {
         request.Headers.ForEach((key, value) => table[key] = value);
@@ -85,7 +85,7 @@ namespace Neo.Network.Http {
       WWWForm form = new WWWForm();
       request.Parameters.ForEach((key, value) => {
         if(!string.IsNullOrEmpty(key)) {
-          form.AddField(key, (value != null) ? value : string.Empty);
+          form.AddField(key, value ?? string.Empty);
         }
       });
       return form;

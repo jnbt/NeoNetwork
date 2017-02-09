@@ -47,11 +47,11 @@ namespace Tests.Neo.Network {
       Assert.AreEqual("#v", b.Fragment);
       Assert.AreEqual("http://user:pass@www.neopoly.de:8080/the/path/index.html?a=b#v", b.ToString());
 
-      b.Scheme   = "ftp";
-      b.Host     = "other.host.de";
-      b.Port     = 3000;
-      b.Path     = "/a/b/c";
-      b.Query    = "c=1";
+      b.Scheme = "ftp";
+      b.Host = "other.host.de";
+      b.Port = 3000;
+      b.Path = "/a/b/c";
+      b.Query = "c=1";
       b.Fragment = "foo";
       Assert.AreEqual("ftp", b.Scheme);
       Assert.AreEqual("other.host.de", b.Host);
