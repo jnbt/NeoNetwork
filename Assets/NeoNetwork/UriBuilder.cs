@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Text;
 using Neo.Collections;
 
@@ -12,6 +13,7 @@ namespace Neo.Network {
     private const string SQueryAssignment = "=";
     private const string SQuerySeparator = "&";
     private const string SQueryIntro = "?";
+    private const char ValueSplitter = ',';
 
     private readonly System.UriBuilder builder;
 
@@ -206,19 +208,23 @@ namespace Neo.Network {
     public static string ToQueryString(NameValueCollection nvc) {
       if(nvc.IsEmpty) return string.Empty;
       StringBuilder sb = new StringBuilder();
+      bool containsParam = false;
       nvc.ForEach((key, val, i) => {
-        if(i > 0) sb.Append(SQuerySeparator);
+        if(string.IsNullOrEmpty(key)) return;
 
-        if(!string.IsNullOrEmpty(val)) {
-          string[] vs = val.Split(',');
-          if(vs.Length > 1) {
-            vs.ForEach((v, j) => {
-              if(j > 0) sb.Append(SQuerySeparator);
-              sb.Append(key).Append(SQueryAssignment).Append(UrlEscape(v));
-            });
-          } else {
-            sb.Append(key).Append(SQueryAssignment).Append(UrlEscape(val));
-          }
+        if(containsParam) sb.Append(SQuerySeparator);
+        else containsParam = true;
+
+        if(val == null) val = string.Empty;
+
+        string[] vs = val.Split(ValueSplitter);
+        if(vs.Length > 1) {
+          vs.ForEach((v, j) => {
+            if(j > 0) sb.Append(SQuerySeparator);
+            sb.Append(key).Append(SQueryAssignment).Append(UrlEscape(v));
+          });
+        } else {
+          sb.Append(key).Append(SQueryAssignment).Append(UrlEscape(val));
         }
       });
       return sb.ToString();

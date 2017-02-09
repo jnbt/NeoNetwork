@@ -7,14 +7,13 @@ namespace Tests.Neo.Network {
   public class TestUriBuilder {
     [Test]
     public void TestParseQueryString() {
-      string simple =  "a=b&c=d";
-      string complex = "ignore?a=b%201&a=c+2&d=x";
-
+      string simple = "a=b&c=d";
       NameValueCollection c1 = UriBuilder.ParseQueryString(simple);
       Assert.AreEqual(2, c1.Count);
       Assert.AreEqual("b", c1["a"]);
       Assert.AreEqual("d", c1["c"]);
 
+      string complex = "ignore?a=b%201&a=c+2&d=x";
       NameValueCollection c2 = UriBuilder.ParseQueryString(complex);
       Assert.AreEqual(2, c2.Count);
       Assert.AreEqual("b 1,c 2", c2["a"]);
@@ -23,17 +22,20 @@ namespace Tests.Neo.Network {
 
     [Test]
     public void StringifyQueryString() {
-      NameValueCollection simple = new NameValueCollection();
-      simple.Add("a", "b");
-      simple.Add("c", "d");
-
-      NameValueCollection complex = new NameValueCollection();
-      complex.Add("a", "b 1");
-      complex.Add("a", "c");
-      complex.Add("d", "x");
-
+      NameValueCollection simple = new NameValueCollection {
+        {"a", "b"}, 
+        {"c", "d"}
+      };
       Assert.AreEqual("a=b&c=d", UriBuilder.ToQueryString(simple));
-      Assert.AreEqual("a=b+1&a=c&d=x", UriBuilder.ToQueryString(complex));
+
+      NameValueCollection complex = new NameValueCollection {
+        {"a", "b 1"},
+        {"x", null},
+        {"y", string.Empty},
+        {"a", "c"},
+        {"d", "x"}
+      };
+      Assert.AreEqual("a=b+1&a=c&x=&y=&d=x", UriBuilder.ToQueryString(complex));
     }
 
     [Test]
@@ -63,7 +65,7 @@ namespace Tests.Neo.Network {
     }
 
     [Test]
-    public void ManipuateParameters() {
+    public void ManipulateParameters() {
       UriBuilder b = new UriBuilder("http://user:pass@www.neopoly.de:8080/the/path/index.html?a=b#v");
       b.SetParam("a", "c");
       Assert.AreEqual("http://user:pass@www.neopoly.de:8080/the/path/index.html?a=c#v", b.ToString());
@@ -74,6 +76,21 @@ namespace Tests.Neo.Network {
 
       b.Query = null;
       Assert.AreEqual("http://user:pass@www.neopoly.de:8080/the/path/index.html#v", b.ToString());
+    }
+
+    [Test]
+    public void SimplyAddsParamToQuery() {
+      UriBuilder b = new UriBuilder("http://test.host");
+      b.AddParam("p1", "1");
+      b.AddParam("p2", "2");
+      Assert.AreEqual("http://test.host/?p1=1&p2=2", b.ToString());
+
+      b.AddParams(new NameValueCollection {
+        {"p3", "3"},
+        {"p3", string.Empty},
+        {"p4", null},
+      });
+      Assert.AreEqual("http://test.host/?p1=1&p2=2&p3=3&p3=&p4=", b.ToString());
     }
 
     [Test]
