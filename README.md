@@ -17,7 +17,6 @@ can be included into your project.
 
 * Clone the repository
 * Open the folder as a Unity3D project
-* Install the *free* [Unity Testing Tools](https://www.assetstore.unity3d.com/#/content/13802) from the AssetStore
 * Install the *free* [Visual Studio Tools for Unity](http://unityvs.com) and import its Unity-package
 * Open `UnityVS.NeoNetWork.sln`
 * [Build a DLL-File](http://forum.unity3d.com/threads/video-tutorial-how-to-use-visual-studio-for-all-your-unity-development.120327)
@@ -71,7 +70,7 @@ client2.Get("http://www.neopoly.com", response => UnityEngine.Debug.Log(response
 
 ## Testing
 
-You can run the tests using the offical [Unity Testing Tools](https://www.assetstore.unity3d.com/#/content/13802). Just install the Unity package and use the [Unit Test Runner](http://www.tallior.com/introduction-to-unity-test-tools/).
+Use Unity's embedded Test Runner via `Window -> General -> Test Runner`.
 
 ## TODO
 
