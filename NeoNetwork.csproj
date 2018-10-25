@@ -68,6 +68,7 @@
     <Compile Include="Assets\NeoNetwork\Http\IRequestPerformerFactory.cs" />
     <Compile Include="Assets\NeoNetwork\Http\Request.cs" />
     <Compile Include="Assets\NeoNetwork\Http\Response.cs" />
+    <Compile Include="Assets\NeoNetwork\Http\StatusCode.cs" />
     <Compile Include="Assets\NeoNetwork\Http\UnityRequestPerformer.cs" />
     <Compile Include="Assets\NeoNetwork\Http\UnityRequestPerformerFactory.cs" />
     <Compile Include="Assets\NeoNetwork\UriBuilder.cs" />

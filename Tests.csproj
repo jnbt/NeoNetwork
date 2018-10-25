@@ -62,6 +62,7 @@
     <Compile Include="Assets\Tests\Http\TestCookieJar.cs" />
     <Compile Include="Assets\Tests\Http\TestHttpMethod.cs" />
     <Compile Include="Assets\Tests\Http\TestResponse.cs" />
+    <Compile Include="Assets\Tests\Http\TestStatusCode.cs" />
     <Compile Include="Assets\Tests\TestPerformRequests.cs" />
     <Compile Include="Assets\Tests\TestUriBuilder.cs" />
     <Compile Include="Assets\Tests\TestUserAgentBuilder.cs" />

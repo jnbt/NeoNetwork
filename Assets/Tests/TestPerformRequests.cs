@@ -39,7 +39,7 @@ namespace Tests {
       client.Post("http://jsonplaceholder.typicode.com/posts", parameters, resp => response = resp);
       while (response == null) yield return null;
       Assert.IsTrue(response.IsSuccess, "Response should be successful");
-      Assert.AreEqual(200, response.Status, "Response should be 200");
+      Assert.AreEqual(201, response.Status, "Response should be 200");
       Assert.IsTrue(response.Body.StartsWith("{"), "Response should contain JSON");
     }
 
@@ -54,7 +54,7 @@ namespace Tests {
       client.Post("http://jsonplaceholder.typicode.com/posts", body, headers, resp => response = resp);
       while (response == null) yield return null;
       Assert.IsTrue(response.IsSuccess, "Response should be successful");
-      Assert.AreEqual(200, response.Status, "Response should be 200");
+      Assert.AreEqual(201, response.Status, "Response should be 200");
       Assert.IsTrue(response.Body.StartsWith("{"), "Response should contain JSON");
     }
   }
