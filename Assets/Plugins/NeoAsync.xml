@@ -1,0 +1,481 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NeoAsync</name>
+    </assembly>
+    <members>
+        <member name="T:Neo.Async.Cache`2">
+             <summary>
+             Provides a generic cache for any kind of objects which loading
+             might need some time and can be referenced by a string key
+             Idea: Provide a function to load one object via key. This
+             loader will only be called once per key (until the cache is cleared)
+            
+             This implies that you have to fetch objects from the cache via a callback instead
+             of a simple getter, as the loading might need some time and might be done in the background
+             </summary>
+             <example>
+             <![CDATA[
+               class SomeClass{
+                 private readonly Cache<string, UnityEngine.GameObject> cache;
+            
+                 public SomeClass(){
+                   cache = new Cache<string, UnityEngine.GameObject>(resolveGameObject);
+                 }
+            
+                 public void Do(){
+                   cache.Get("MyBigGameObject", (go) => go.transform.position = UnityEngine.Vector3.zero);
+                 }
+            
+                 private GameObject resolveGameObject(string key, Action<UnityEngine.GameObject done){
+                   done(UnityEngine.Resources.Load<GameObject>(key));
+                 }
+               }
+             ]]>
+             </example>
+             <typeparam name="TKey">Type of key to handle cache</typeparam>
+             <typeparam name="TValue">Type of item value</typeparam>
+        </member>
+        <member name="T:Neo.Async.Cache`2.LoaderFunction">
+            <summary>
+            Function to be called to load single items into the cache
+            </summary>
+            <param name="key">which is looked up</param>
+            <param name="loader">to call when loaded</param>
+        </member>
+        <member name="T:Neo.Async.Cache`2.CallbackFunction">
+            <summary>
+            Function to be called when accessing items on the cache
+            </summary>
+            <param name="item">which is loaded from cache or lazy</param>
+        </member>
+        <member name="M:Neo.Async.Cache`2.#ctor(Neo.Async.Cache{`0,`1}.LoaderFunction)">
+            <summary>
+            Initializes a new cache which is bound to a specific loader function
+            </summary>
+            <param name="loader">to be called to load items</param>
+        </member>
+        <member name="M:Neo.Async.Cache`2.Get(`0,Neo.Async.Cache{`0,`1}.CallbackFunction)">
+            <summary>
+            Receives an item from the cache or loads it
+            </summary>
+            <param name="key">to lookup</param>
+            <param name="callback">to be calles when loaded</param>
+        </member>
+        <member name="M:Neo.Async.Cache`2.ForEach(Neo.Async.Cache{`0,`1}.CallbackFunction)">
+            <summary>
+            Iterates over all loaded cached items
+            </summary>
+            <param name="callback">called for every item</param>
+        </member>
+        <member name="M:Neo.Async.Cache`2.Clear">
+            <summary>
+            Clears the whole cache
+            </summary>
+        </member>
+        <member name="P:Neo.Async.Cache`2.IsPending">
+            <summary>
+            Checks if there is at least one pending call to the cache
+            </summary>
+        </member>
+        <member name="T:Neo.Async.CoroutineStarter">
+            <summary>
+            Allows starting a Unity-based coroutine from any instance.
+            This is needed as only objects which inherit from MonoBehavior can
+            start a coroutine, but you might not use this inheritance.
+            </summary>
+            <example>
+            <![CDATA[
+              class SomeClass {
+                public void Do(){
+                  CoroutineStarter.Instance.Add(doLazy());
+                }
+                private IEnumerator doLazy(){
+                  yield return UnityEngine.WaitForSeconds(5f);
+                  UnityEngine.Debug.Log("This should be invoked as a coroutine");
+                }
+              }
+            ]]>
+            </example>
+        </member>
+        <member name="P:Neo.Async.CoroutineStarter.Instance">
+            <summary>
+            Returns the single GameObject-based instance
+            </summary>
+        </member>
+        <member name="M:Neo.Async.CoroutineStarter.Add(System.Collections.IEnumerator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Neo.Async.CoroutineStarter.Remove(Neo.Async.ICoroutine)">
+            <inheritdoc />
+        </member>
+        <member name="T:Neo.Async.ICoroutine">
+            <summary>
+            Represents a running coroutine
+            </summary>
+        </member>
+        <member name="T:Neo.Async.ICoroutineStarter">
+            <summary>
+            Represents a controller instance which is able to start a coroutine
+            based on any IEnumerator and also cancel the coroutine.
+            </summary>
+        </member>
+        <member name="M:Neo.Async.ICoroutineStarter.Add(System.Collections.IEnumerator)">
+            <summary>
+            Adds an coroutine via an IEnumerator
+            </summary>
+            <param name="task">to be executed</param>
+        </member>
+        <member name="M:Neo.Async.ICoroutineStarter.Remove(Neo.Async.ICoroutine)">
+            <summary>
+            Remove an already started coroutine
+            </summary>
+            <param name="coroutine">to be stopped</param>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="T:Neo.Async.IDebounce">
+            <summary>
+            Represents a debounced function 
+            </summary>
+        </member>
+        <member name="M:Neo.Async.IDebounce.Abort">
+            <summary>
+            Cancel the delayed <c>func</c> invocations
+            </summary>
+        </member>
+        <member name="M:Neo.Async.IDebounce.Flush">
+            <summary>
+            Immediatly trigger the delayed <c>func</c> invocations
+            </summary>
+        </member>
+        <member name="T:Neo.Async.IDebounce`1">
+            <summary>
+            Represents a debounced function 
+            </summary>
+        </member>
+        <member name="M:Neo.Async.IDebounce`1.Call(`0)">
+            <summary>
+            Triggers a debounced <c>func</c> invocation
+            </summary>
+            <param name="arg">to pass to <c>func</c></param>
+        </member>
+        <member name="T:Neo.Async.IDebounce`2">
+            <summary>
+            Represents a debounced function 
+            </summary>
+        </member>
+        <member name="M:Neo.Async.IDebounce`2.Call(`0,`1)">
+            <summary>
+            Triggers a debounced <c>func</c> invocation
+            </summary>
+            <param name="arg0">to pass to <c>func</c></param>
+            <param name="arg1">to pass to <c>func</c></param>
+        </member>
+        <member name="T:Neo.Async.IDeferred">
+            <summary>
+            Represents a deferred invocation of a callback
+            </summary>
+        </member>
+        <member name="M:Neo.Async.IDeferred.Start">
+            <summary>
+            Starts the coroutine. When completed the callback will be called
+            </summary>
+        </member>
+        <member name="M:Neo.Async.IDeferred.Abort">
+            <summary>
+            Starts the coroutine. When completed the callback will be called
+            </summary>
+        </member>
+        <member name="P:Neo.Async.IDeferred.Finished">
+            <summary>
+            True if the invocation already happend since the last Start
+            </summary>
+        </member>
+        <member name="P:Neo.Async.IDeferred.Aborted">
+            <summary>
+            True if the invocation will not happend since the last start
+            </summary>
+        </member>
+        <member name="P:Neo.Async.IDeferred.Seconds">
+            <summary>
+            Seconds to defer
+            </summary>
+        </member>
+        <member name="P:Neo.Async.IDeferred.Callback">
+            <summary>
+            Callback to be called on invocation
+            </summary>
+        </member>
+        <member name="T:Neo.Async.ITiming">
+             <summary>
+             Allows easy time-driven callbacks:
+              * After(seconds, callback)
+                Invokes a callback after the timeout in seconds.
+              * Every(seconds, callback)
+                Invokes a callback every x seconds. First time in x seconds.
+             </summary>
+            
+             <example>
+               [Inject]
+               public ITiming Timing { get; set; }
+               ...
+               Timing.After(5, () => UnityEngine.Debug.Log("This will be invoked in 5 seconds"));
+               Timing.Every(5, () => UnityEnging.Debug.Log("This will be invoked EVERY 5 seconds"));
+             </example>
+            
+             <remarks>
+               All calls return a "Deferred" object which allows calling an Abort method
+               will which stop the time-driven callback.
+             </remarks>
+        </member>
+        <member name="M:Neo.Async.ITiming.After(System.Int32,System.Action)">
+            <summary>
+            Builds and starts a deferral for x seconds. Than the callback is called.
+            </summary>
+            <param name="s">to wait</param>
+            <param name="cb">to call</param>
+            <returns>the deferral</returns>
+        </member>
+        <member name="M:Neo.Async.ITiming.After(System.Single,System.Action)">
+            <summary>
+            Builds and starts a deferral for x seconds. Than the callback is called.
+            </summary>
+            <param name="s">to wait</param>
+            <param name="cb">to call</param>
+            <returns>the deferral</returns>
+        </member>
+        <member name="M:Neo.Async.ITiming.Every(System.Int32,System.Action)">
+            <summary>
+            Builds and starts a deferral for x seconds. The callback is called every x seconds.
+            </summary>
+            <param name="s">to use as interval</param>
+            <param name="cb">to call</param>
+            <returns>the deferral</returns>
+        </member>
+        <member name="M:Neo.Async.ITiming.Every(System.Single,System.Action)">
+            <summary>
+            Builds and starts a deferral for x seconds. The callback is called every x seconds.
+            </summary>
+            <param name="s">to use as interval</param>
+            <param name="cb">to call</param>
+            <returns>the deferral</returns>
+        </member>
+        <member name="M:Neo.Async.ITiming.Debounce``1(System.Action{``0},System.Single,System.Nullable{System.Single},System.Boolean,System.Boolean)">
+             <summary>
+             Creates a debounced function that delays invoking <c>func</c> until after <c>wait</c> seconds
+             have elapsed since the last time the debounced function was invoked. The debounced function
+             comes with a <see cref="M:Neo.Async.IDebounce.Abort"/> method to cancel delayed `func` invocations
+             and a <see cref="M:Neo.Async.IDebounce.Flush"/> method to immediately invoke them.
+            
+             Provide options to indicate whether <c>func</c> should be invoked on the leading and/or
+             trailing edge of the <c>wait</c> timeout.
+            
+             The <c>func</c> is invoked with the last arguments provided to the debounced function.
+             </summary>
+             <remarks>
+             If <c>leading</c> and <c>trailing</c> options are true, <c>func</c> is invoked on the
+             trailing edge of the timeout only if the debounced function is invoked more than once
+             during the <c>wait</c> timeout.
+            
+             See David Corbachos article (https://css-tricks.com/debouncing-throttling-explained-examples/)
+             for details over the differences between <see cref="M:Neo.Async.ITiming.Throttle``1(System.Action{``0},System.Single,System.Boolean,System.Boolean)"/> and
+             <see cref="M:Neo.Async.ITiming.Debounce``1(System.Action{``0},System.Single,System.Nullable{System.Single},System.Boolean,System.Boolean)"/>.
+             </remarks>
+             <param name="func">The function to debounce</param>
+             <param name="wait">The number of seconds to delay</param>
+             <param name="maxWait">The maximum seconds <c>func</c> is allowed to be delayed before it's invoked</param>
+             <param name="leading">Specify invoking on the leading edge of the timeout</param>
+             <param name="trailing">Specify invoking on the trailing edge of the timeout</param>
+             <typeparam name="T">Input type of <c>func</c></typeparam>
+             <returns>The debounced <c>func</c> wrapper</returns>
+        </member>
+        <member name="M:Neo.Async.ITiming.Debounce``2(System.Action{``0,``1},System.Single,System.Nullable{System.Single},System.Boolean,System.Boolean)">
+            <summary>
+            Same as <see cref="M:Neo.Async.ITiming.Debounce``1(System.Action{``0},System.Single,System.Nullable{System.Single},System.Boolean,System.Boolean)"/> with multiple arguments
+            </summary>
+        </member>
+        <member name="M:Neo.Async.ITiming.Throttle``1(System.Action{``0},System.Single,System.Boolean,System.Boolean)">
+             <summary>
+             Creates a throttled function that only invokes <c>func</c> at most once per every <c>wait</c>
+             seconds. The throttled function comes with a <see cref="M:Neo.Async.IDebounce.Abort"/> method to cancel
+             delayed <c>func</c> invocations and a <see cref="M:Neo.Async.IDebounce.Flush"/> method to immediately
+             invoke them.
+            
+             Provide options to indicate whether <c>func</c> should be invoked on the leading and/or
+             trailing edge of the <c>wait</c> timeout.
+            
+             The <c>func</c> is invoked with the last arguments provided to the throttled function.
+             Subsequent calls to the throttled function return the result of the last <c>func</c> invocation.
+             </summary>
+             <remarks>
+             If <c>leading</c> and <c>trailing</c> options are true (default), <c>func</c> is invoked on the
+             trailing edge of the timeout only if the throttled function is invoked more than once
+             during the <c>wait</c> timeout.
+            
+             See David Corbachos article (https://css-tricks.com/debouncing-throttling-explained-examples/)
+             for details over the differences between <see cref="M:Neo.Async.ITiming.Throttle``1(System.Action{``0},System.Single,System.Boolean,System.Boolean)"/> and
+             <see cref="M:Neo.Async.ITiming.Debounce``1(System.Action{``0},System.Single,System.Nullable{System.Single},System.Boolean,System.Boolean)"/>.
+             </remarks>
+             <param name="func">The function to throttle</param>
+             <param name="wait">The number of seconds to throttle invocations to</param>
+             <param name="leading">Specify invoking on the leading edge of the timeout</param>
+             <param name="trailing">Specify invoking on the trailing edge of the timeout</param>
+             <typeparam name="T">Input type of <c>func</c></typeparam>
+             <returns>The throttled <c>func</c> wrapper</returns>
+        </member>
+        <member name="M:Neo.Async.ITiming.Throttle``2(System.Action{``0,``1},System.Single,System.Boolean,System.Boolean)">
+            <summary>
+            Same as <see cref="M:Neo.Async.ITiming.Throttle``1(System.Action{``0},System.Single,System.Boolean,System.Boolean)"/> with multiple arguments
+            </summary>
+        </member>
+        <member name="T:Neo.Async.Timing">
+            <inheritdoc />
+        </member>
+        <member name="M:Neo.Async.Timing.After(System.Int32,System.Action)">
+            <inheritdoc />
+        </member>
+        <member name="M:Neo.Async.Timing.After(System.Single,System.Action)">
+            <inheritdoc />
+        </member>
+        <member name="M:Neo.Async.Timing.Every(System.Int32,System.Action)">
+            <inheritdoc />
+        </member>
+        <member name="M:Neo.Async.Timing.Every(System.Single,System.Action)">
+            <inheritdoc />
+        </member>
+        <member name="M:Neo.Async.Timing.Debounce``1(System.Action{``0},System.Single,System.Nullable{System.Single},System.Boolean,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Neo.Async.Timing.Debounce``2(System.Action{``0,``1},System.Single,System.Nullable{System.Single},System.Boolean,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Neo.Async.Timing.Throttle``1(System.Action{``0},System.Single,System.Boolean,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Neo.Async.Timing.Throttle``2(System.Action{``0,``1},System.Single,System.Boolean,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:Neo.Async.UnityDebounceBase">
+            <summary>
+            Base class to handle debouncing / throttling logic
+            </summary>
+        </member>
+        <member name="M:Neo.Async.UnityDebounceBase.#ctor(Neo.Async.ITiming,System.Single,System.Boolean,System.Boolean,System.Nullable{System.Single})">
+            <summary>
+            Initializes a debounced function call
+            </summary>
+            <param name="timing">Timing system to use</param>
+            <param name="wait">Time to wait</param>
+            <param name="leading">If set to <c>true</c> invoke on leading flank.</param>
+            <param name="trailing">If set to <c>true</c> invoke on trailing flank.</param>
+            <param name="maxWait">Maximum time to wait</param>
+        </member>
+        <member name="M:Neo.Async.UnityDebounceBase.Abort">
+            <inheritdoc />
+        </member>
+        <member name="M:Neo.Async.UnityDebounceBase.Flush">
+            <inheritdoc />
+        </member>
+        <member name="M:Neo.Async.UnityDebounceBase.DebouncedCall">
+            <summary>
+            Debounceds the call
+            </summary>
+        </member>
+        <member name="M:Neo.Async.UnityDebounceBase.DoResetArgs">
+            <summary>
+            Hook to reset the remembered arguments
+            </summary>
+        </member>
+        <member name="M:Neo.Async.UnityDebounceBase.DoInvokeFunc">
+            <summary>
+            Hook to actually invoke the debounced function
+            </summary>
+        </member>
+        <member name="T:Neo.Async.UnityDebounce`1">
+            Debounced function with one argument
+            <see cref="T:Neo.Async.UnityDebounceBase"/>
+        </member>
+        <member name="M:Neo.Async.UnityDebounce`1.#ctor(Neo.Async.ITiming,System.Action{`0},System.Single,System.Boolean,System.Boolean,System.Nullable{System.Single})">
+            <summary>
+            Initializes a debounced function call
+            </summary>
+            <param name="timing">Timing system to use</param>
+            <param name="func">to invoke debounced</param>
+            <param name="wait">Time to wait</param>
+            <param name="leading">If set to <c>true</c> invoke on leading flank.</param>
+            <param name="trailing">If set to <c>true</c> invoke on trailing flank.</param>
+            <param name="maxWait">Maximum time to wait</param>
+        </member>
+        <member name="M:Neo.Async.UnityDebounce`1.Call(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Neo.Async.UnityDebounce`1.DoResetArgs">
+            <summary>
+            Resets the argument
+            </summary>
+        </member>
+        <member name="M:Neo.Async.UnityDebounce`1.DoInvokeFunc">
+            <summary>
+            Calls the debounced function with the last argument
+            </summary>
+        </member>
+        <member name="T:Neo.Async.UnityDebounce`2">
+            Debounced function with two arguments
+            <see cref="T:Neo.Async.UnityDebounceBase"/>
+        </member>
+        <member name="M:Neo.Async.UnityDebounce`2.#ctor(Neo.Async.ITiming,System.Action{`0,`1},System.Single,System.Boolean,System.Boolean,System.Nullable{System.Single})">
+            <summary>
+            Initializes a debounced function call
+            </summary>
+            <param name="timing">Timing system to use</param>
+            <param name="func">to invoke debounced</param>
+            <param name="wait">Time to wait</param>
+            <param name="leading">If set to <c>true</c> invoke on leading flank.</param>
+            <param name="trailing">If set to <c>true</c> invoke on trailing flank.</param>
+            <param name="maxWait">Maximum time to wait</param>
+        </member>
+        <member name="M:Neo.Async.UnityDebounce`2.Call(`0,`1)">
+            <inheritdoc />
+        </member>
+        <member name="M:Neo.Async.UnityDebounce`2.DoResetArgs">
+            <summary>
+            Resets the arguments
+            </summary>
+        </member>
+        <member name="M:Neo.Async.UnityDebounce`2.DoInvokeFunc">
+            <summary>
+            Calls the debounced function with the last arguments
+            </summary>
+        </member>
+        <member name="T:Neo.Async.UnityDeferred">
+            <summary>
+            Represents a deferred call using Unity's coroutines
+            </summary>
+        </member>
+        <member name="P:Neo.Async.UnityDeferred.Seconds">
+            <inheritdoc />
+        </member>
+        <member name="P:Neo.Async.UnityDeferred.Callback">
+            <inheritdoc />
+        </member>
+        <member name="P:Neo.Async.UnityDeferred.Finished">
+            <inheritdoc />
+        </member>
+        <member name="P:Neo.Async.UnityDeferred.Aborted">
+            <inheritdoc />
+        </member>
+        <member name="M:Neo.Async.UnityDeferred.#ctor(System.Single,System.Action)">
+            <summary>
+            Creates in instance which describes a deferred call
+            </summary>
+            <param name="s">to use as timeout or interval</param>
+            <param name="cb">to be called</param>
+        </member>
+        <member name="M:Neo.Async.UnityDeferred.Start">
+            <inheritdoc />
+        </member>
+        <member name="M:Neo.Async.UnityDeferred.Abort">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

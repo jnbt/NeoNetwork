@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NeoLogging</name>
+    </assembly>
+    <members>
+        <member name="T:Neo.Logging.ILogger">
+            <summary>
+            Interface for our logging class.
+            </summary>
+        </member>
+        <member name="M:Neo.Logging.ILogger.Log(System.Object[])">
+            <summary>
+            Logs the arguments as debug information
+            </summary>
+            <param name="what">to log</param>
+        </member>
+        <member name="M:Neo.Logging.ILogger.Log(System.Func{System.String})">
+            <summary>
+            Logs the result of the lazy function as debug information
+            </summary>
+            <param name="lazy">to log</param>
+        </member>
+        <member name="M:Neo.Logging.ILogger.Warn(System.Object[])">
+            <summary>
+            Logs the arguments as a warning
+            </summary>
+            <param name="what">to log</param>
+        </member>
+        <member name="M:Neo.Logging.ILogger.Warn(System.Func{System.String})">
+            <summary>
+            Logs the result of the lazy function as warning
+            </summary>
+            <param name="lazy">to log</param>
+        </member>
+        <member name="M:Neo.Logging.ILogger.Error(System.Object[])">
+            <summary>
+            Logs the arguments as an error
+            </summary>
+            <param name="what">to log</param>
+        </member>
+        <member name="M:Neo.Logging.ILogger.Error(System.Func{System.String})">
+            <summary>
+            Logs the result of the lazy function as error
+            </summary>
+            <param name="lazy">to log</param>
+        </member>
+        <member name="M:Neo.Logging.ILogger.Exception(System.Exception)">
+            <summary>
+            Logs an exception. This stops the execution!
+            </summary>
+            <param name="e">to log</param>
+        </member>
+        <member name="T:Neo.Logging.Level">
+            <summary>
+            Describes the level of logging for instances of the logger class
+            </summary>
+        </member>
+        <member name="F:Neo.Logging.Level.LOG">
+            <summary>
+            Describes a logging on debug level
+            </summary>
+        </member>
+        <member name="F:Neo.Logging.Level.WARN">
+            <summary>
+            Describes a logging on warning level
+            </summary>
+        </member>
+        <member name="F:Neo.Logging.Level.ERROR">
+            <summary>
+            Describes a logging on error level
+            </summary>
+        </member>
+        <member name="T:Neo.Logging.Logger">
+            <summary>
+             This is only a logger which bases on Unity's Debug.Log
+             One might use another output in later versions.
+            
+             The logger supports four levels of logging:
+             1. Log (= Debug)
+             2. Warn
+             3. Error
+             4. Exception
+            
+             The level of logging can be configured setting Logger.LogLevel, but Exceptions
+             will always be logged.
+            
+             Logging is done either via simple method call which sends some strings or via
+             a callback which will only be invoked if the logging level is matched.
+             Later is especially useful for logging information which serialization to string is
+             slow and/or heavy in memory usage (e.g. JSON or ApiObject). So it should only be done
+             if needed.
+            
+             Usage:
+            
+              Logger logger = new Logger("MyClass");
+              logger.Log(() => "This will be 1 logged");
+             </summary>
+        </member>
+        <member name="F:Neo.Logging.Logger.LogLevel">
+            <summary>
+            The global logging level for all instances of the logger.
+            </summary>
+        </member>
+        <member name="P:Neo.Logging.Logger.Name">
+            <summary>
+            The current name of logger. Will be prefixed.
+            </summary>
+        </member>
+        <member name="M:Neo.Logging.Logger.#ctor(System.String)">
+            <summary>
+            Create a new instance and sets it's name
+            </summary>
+            <param name="name">of the logger, will be prefixed</param>
+        </member>
+        <member name="M:Neo.Logging.Logger.Log(System.Object[])">
+            <summary>
+            Logs the arguments
+            </summary>
+            <param name="what">to log</param>
+        </member>
+        <member name="M:Neo.Logging.Logger.Log(System.Func{System.String})">
+            <summary>
+            Logs the result of the lazy function
+            </summary>
+            <param name="lazy">to log</param>
+        </member>
+        <member name="M:Neo.Logging.Logger.Warn(System.Object[])">
+            <summary>
+            Logs what as warning
+            </summary>
+            <param name="what">to log</param>
+        </member>
+        <member name="M:Neo.Logging.Logger.Warn(System.Func{System.String})">
+            <summary>
+            Logs the result of the lazy function as warning
+            </summary>
+            <param name="lazy">to log</param>
+        </member>
+        <member name="M:Neo.Logging.Logger.Error(System.Object[])">
+            <summary>
+            Logs what as error
+            </summary>
+            <param name="what">to log</param>
+        </member>
+        <member name="M:Neo.Logging.Logger.Error(System.Func{System.String})">
+            <summary>
+            Logs the result of the lazy function as error
+            </summary>
+            <param name="lazy">to log</param>
+        </member>
+        <member name="M:Neo.Logging.Logger.Exception(System.Exception)">
+            <summary>
+            Logs an exception. This stops the execution!
+            </summary>
+            <param name="e">to log</param>
+        </member>
+    </members>
+</doc>
