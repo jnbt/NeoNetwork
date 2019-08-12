@@ -1,6 +1,6 @@
-using NUnit.Framework;
 using Neo.Collections;
 using Neo.Network;
+using NUnit.Framework;
 
 namespace Tests.Neo.Network {
   [TestFixture]
@@ -23,7 +23,7 @@ namespace Tests.Neo.Network {
     [Test]
     public void StringifyQueryString() {
       NameValueCollection simple = new NameValueCollection {
-        {"a", "b"}, 
+        {"a", "b"},
         {"c", "d"}
       };
       Assert.AreEqual("a=b&c=d", UriBuilder.ToQueryString(simple));
@@ -49,19 +49,19 @@ namespace Tests.Neo.Network {
       Assert.AreEqual("#v", b.Fragment);
       Assert.AreEqual("http://user:pass@www.neopoly.de:8080/the/path/index.html?a=b#v", b.ToString());
 
-      b.Scheme = "ftp";
+      b.Scheme = "https";
       b.Host = "other.host.de";
       b.Port = 3000;
       b.Path = "/a/b/c";
       b.Query = "c=1";
       b.Fragment = "foo";
-      Assert.AreEqual("ftp", b.Scheme);
+      Assert.AreEqual("https", b.Scheme);
       Assert.AreEqual("other.host.de", b.Host);
       Assert.AreEqual(3000, b.Port);
       Assert.AreEqual("/a/b/c", b.Path);
       Assert.AreEqual("?c=1", b.Query);
       Assert.AreEqual("#foo", b.Fragment);
-      Assert.AreEqual("ftp://user:pass@other.host.de:3000/a/b/c?c=1#foo", b.ToString());
+      Assert.AreEqual("https://user:pass@other.host.de:3000/a/b/c?c=1#foo", b.ToString());
     }
 
     [Test]

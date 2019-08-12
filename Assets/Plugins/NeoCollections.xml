@@ -1,0 +1,978 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NeoCollections</name>
+    </assembly>
+    <members>
+        <member name="T:ArrayExtensions">
+            <summary>
+            Extends all array base classes with iteration function ForEach
+            </summary>
+            <remarks>
+            This file as intentionally no namespace as the extensions methods will be loaded GLOBALLY
+            </remarks>
+        </member>
+        <member name="M:ArrayExtensions.ForEach``1(``0[],System.Action{``0})">
+            <summary>
+            Iterate over the elements
+            </summary>
+            <typeparam name="T">Type of the array items</typeparam>
+            <param name="array">to be iterated</param>
+            <param name="func">to be called per item</param>
+        </member>
+        <member name="M:ArrayExtensions.ForEach``1(``0[],System.Action{``0,System.Int32})">
+            <summary>
+            Iterate over the elements including the index
+            </summary>
+            <typeparam name="T">Type of the array items</typeparam>
+            <param name="array">to be iterated</param>
+            <param name="func">to be called per item with its index</param>
+        </member>
+        <member name="M:ArrayExtensions.ForEach(System.Int32[],System.Action{System.Int32})">
+            <summary>
+            Iterate over the elements
+            </summary>
+            <param name="array">to be iterated</param>
+            <param name="func">to be called per item</param>
+        </member>
+        <member name="M:ArrayExtensions.ForEach(System.Int32[],System.Action{System.Int32,System.Int32})">
+            <summary>
+            Iterate over the elements including the index
+            </summary>
+            <param name="array">to be iterated</param>
+            <param name="func">to be called per item with its index</param>
+        </member>
+        <member name="M:ArrayExtensions.ForEach(System.Int64[],System.Action{System.Int64})">
+            <summary>
+            Iterate over the elements
+            </summary>
+            <param name="array">to be iterated</param>
+            <param name="func">to be called per item</param>
+        </member>
+        <member name="M:ArrayExtensions.ForEach(System.Int64[],System.Action{System.Int64,System.Int32})">
+            <summary>
+            Iterate over the elements including the index
+            </summary>
+            <param name="array">to be iterated</param>
+            <param name="func">to be called per item with its index</param>
+        </member>
+        <member name="M:ArrayExtensions.ForEach(System.Single[],System.Action{System.Single})">
+            <summary>
+            Iterate over the elements
+            </summary>
+            <param name="array">to be iterated</param>
+            <param name="func">to be called per item</param>
+        </member>
+        <member name="M:ArrayExtensions.ForEach(System.Single[],System.Action{System.Single,System.Int32})">
+            <summary>
+            Iterate over the elements including the index
+            </summary>
+            <param name="array">to be iterated</param>
+            <param name="func">to be called per item with its index</param>
+        </member>
+        <member name="M:ArrayExtensions.ForEach(System.Boolean[],System.Action{System.Boolean})">
+            <summary>
+            Iterate over the elements
+            </summary>
+            <param name="array">to be iterated</param>
+            <param name="func">to be called per item</param>
+        </member>
+        <member name="M:ArrayExtensions.ForEach(System.Boolean[],System.Action{System.Boolean,System.Int32})">
+            <summary>
+            Iterate over the elements including the index
+            </summary>
+            <param name="array">to be iterated</param>
+            <param name="func">to be called per item with its index</param>
+        </member>
+        <member name="M:ArrayExtensions.ForEach(System.Double[],System.Action{System.Double})">
+            <summary>
+            Iterate over the elements
+            </summary>
+            <param name="array">to be iterated</param>
+            <param name="func">to be called per item</param>
+        </member>
+        <member name="M:ArrayExtensions.ForEach(System.Double[],System.Action{System.Double,System.Int32})">
+            <summary>
+            Iterate over the elements including the index
+            </summary>
+            <param name="array">to be iterated</param>
+            <param name="func">to be called per item with its index</param>
+        </member>
+        <member name="M:ArrayExtensions.ForEach(System.Char[],System.Action{System.Char})">
+            <summary>
+            Iterate over the elements
+            </summary>
+            <param name="array">to be iterated</param>
+            <param name="func">to be called per item</param>
+        </member>
+        <member name="M:ArrayExtensions.ForEach(System.Char[],System.Action{System.Char,System.Int32})">
+            <summary>
+            Iterate over the elements including the index
+            </summary>
+            <param name="array">to be iterated</param>
+            <param name="func">to be called per item with its index</param>
+        </member>
+        <member name="M:ArrayExtensions.ConvertAll``2(``0[],System.Func{``0,``1})">
+            <summary>
+            Returns a new array by converting each member using the converter
+            </summary>
+            <typeparam name="TOutput">of converter's result</typeparam>
+            <param name="array">to be converted</param>
+            <param name="func">to convert each member</param>
+            <returns>a converted array</returns>
+        </member>
+        <member name="M:ArrayExtensions.ConvertAll``1(System.Int32[],System.Func{System.Int32,``0})">
+            <summary>
+            Returns a new array by converting each member using the converter
+            </summary>
+            <typeparam name="TOutput">of converter's result</typeparam>
+            <param name="array">to be converted</param>
+            <param name="func">to convert each member</param>
+            <returns>a converted array</returns>
+        </member>
+        <member name="M:ArrayExtensions.ConvertAll``1(System.Int64[],System.Func{System.Int64,``0})">
+            <summary>
+            Returns a new array by converting each member using the converter
+            </summary>
+            <typeparam name="TOutput">of converter's result</typeparam>
+            <param name="array">to be converted</param>
+            <param name="func">to convert each member</param>
+            <returns>a converted array</returns>
+        </member>
+        <member name="M:ArrayExtensions.ConvertAll``1(System.Single[],System.Func{System.Single,``0})">
+            <summary>
+            Returns a new array by converting each member using the converter
+            </summary>
+            <typeparam name="TOutput">of converter's result</typeparam>
+            <param name="array">to be converted</param>
+            <param name="func">to convert each member</param>
+            <returns>a converted array</returns>
+        </member>
+        <member name="M:ArrayExtensions.ConvertAll``1(System.Double[],System.Func{System.Double,``0})">
+            <summary>
+            Returns a new array by converting each member using the converter
+            </summary>
+            <typeparam name="TOutput">of converter's result</typeparam>
+            <param name="array">to be converted</param>
+            <param name="func">to convert each member</param>
+            <returns>a converted array</returns>
+        </member>
+        <member name="M:ArrayExtensions.ConvertAll``1(System.Boolean[],System.Func{System.Boolean,``0})">
+            <summary>
+            Returns a new array by converting each member using the converter
+            </summary>
+            <typeparam name="TOutput">of converter's result</typeparam>
+            <param name="array">to be converted</param>
+            <param name="func">to convert each member</param>
+            <returns>a converted array</returns>
+        </member>
+        <member name="M:ArrayExtensions.ConvertAll``1(System.Char[],System.Func{System.Char,``0})">
+            <summary>
+            Returns a new array by converting each member using the converter
+            </summary>
+            <typeparam name="TOutput">of converter's result</typeparam>
+            <param name="array">to be converted</param>
+            <param name="func">to convert each member</param>
+            <returns>a converted array</returns>
+        </member>
+        <member name="T:Neo.Collections.Dictionary`2">
+            <summary>
+            Subclass of System.Collection.Generic.Dictionary
+            </summary>
+            <typeparam name="TKey">type of the keys</typeparam>
+            <typeparam name="TValue">type of the values</typeparam>
+        </member>
+        <member name="M:Neo.Collections.Dictionary`2.#ctor">
+            <summary>
+            Instantiate a new dictionary with default capacity
+            </summary>
+        </member>
+        <member name="M:Neo.Collections.Dictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1})">
+            <summary>
+            Instantiate a new dictionary using all members as initial state
+            </summary>
+            <param name="initial">to use as initial members</param>
+        </member>
+        <member name="M:Neo.Collections.Dictionary`2.#ctor(System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            Instantiate a new dictionary with a custom comparer
+            </summary>
+            <param name="comparer">to use as comparer</param>
+        </member>
+        <member name="M:Neo.Collections.Dictionary`2.#ctor(System.Int32)">
+            <summary>
+            Instantiate a new dictionary with custom capacity
+            </summary>
+            <param name="capacity">to use</param>
+        </member>
+        <member name="M:Neo.Collections.Dictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            Instantiate a new dictionary using all members as initial state and a custom comparer
+            </summary>
+            <param name="initial">to use a initial state</param>
+            <param name="comparer">to use as comparer</param>
+        </member>
+        <member name="M:Neo.Collections.Dictionary`2.#ctor(System.Int32,System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            Instantiate a new dictionary with a custom capacity and custom comparer
+            </summary>
+            <param name="capacity">to use</param>
+            <param name="comparer">to use</param>
+        </member>
+        <member name="M:Neo.Collections.Dictionary`2.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Instantiate a new dictionary with serialized data
+            </summary>
+            <param name="info">information required to serialize</param>
+            <param name="context">containing the source and destination of the serialized stream</param>
+        </member>
+        <member name="M:Neo.Collections.Dictionary`2.ForEach(System.Action{`0,`1})">
+            <summary>
+            Iterates over the members
+            </summary>
+            <param name="func">called per key and value</param>
+        </member>
+        <member name="M:Neo.Collections.Dictionary`2.FindAll(System.Func{`0,`1,System.Boolean})">
+            <summary>
+            Returns a new Dictionary including all members which evaluate to true
+            </summary>
+            <param name="func">called per key and value</param>
+            <returns>new filtered Dictionary</returns>
+        </member>
+        <member name="M:Neo.Collections.Dictionary`2.Get(`0)">
+            <summary>
+            Returns the value for the key if it's present
+            </summary>
+            <param name="key">to be looked up</param>
+            <returns>the found value or a default value</returns>
+        </member>
+        <member name="M:Neo.Collections.Dictionary`2.Has(`0)">
+            <summary>
+            Check is a key is present in the Dictionary
+            </summary>
+            <param name="key">to be looked up</param>
+            <returns>true if present</returns>
+        </member>
+        <member name="P:Neo.Collections.Dictionary`2.IsEmpty">
+            <summary>
+            Is the collection empty?
+            </summary>
+        </member>
+        <member name="T:Neo.Collections.ICollection`1">
+            <summary>
+            Defines methods to manipulate generic collections
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Neo.Collections.ICollection`1.ForEach(System.Action{`0})">
+            <summary>
+            Iterates over the collection and calls the func for each member
+            </summary>
+            <param name="func">to be called per member</param>
+        </member>
+        <member name="M:Neo.Collections.ICollection`1.ForEach(System.Action{`0,System.Int32})">
+            <summary>
+            Iterates over the collection and calls the func for each member
+            </summary>
+            <param name="func">to be called per member with it's index</param>
+        </member>
+        <member name="P:Neo.Collections.ICollection`1.IsEmpty">
+            <summary>
+            True if the collection is empty
+            </summary>
+        </member>
+        <member name="T:Neo.Collections.IComparer`1">
+            <summary>
+            Defines a method that a type implements to compare two objects
+            </summary>
+            <typeparam name="T">The type of objects to compare</typeparam>
+        </member>
+        <member name="T:Neo.Collections.IDictionary">
+            <summary>
+            Represents a nongeneric collection of key/value pairs.
+            </summary>
+        </member>
+        <member name="T:Neo.Collections.IDictionary`2">
+            <summary>
+            Represents a generic collection of key/value pairs
+            </summary>
+            <typeparam name="TKey">The type of keys in the dictionary</typeparam>
+            <typeparam name="TValue">The type of values in the dictionary</typeparam>
+        </member>
+        <member name="M:Neo.Collections.IDictionary`2.ForEach(System.Action{`0,`1})">
+            <summary>
+            Iterates over the members
+            </summary>
+            <param name="func">called per key and value</param>
+        </member>
+        <member name="M:Neo.Collections.IDictionary`2.FindAll(System.Func{`0,`1,System.Boolean})">
+            <summary>
+            Returns a new Dictionary including all members which evaluate to true
+            </summary>
+            <param name="func">called per key and value</param>
+            <returns>new filtered Dictionary</returns>
+        </member>
+        <member name="M:Neo.Collections.IDictionary`2.Get(`0)">
+            <summary>
+            Returns the value for the key if it's present
+            </summary>
+            <param name="key">to be looked up</param>
+            <returns>the found value or a default value</returns>
+        </member>
+        <member name="M:Neo.Collections.IDictionary`2.Has(`0)">
+            <summary>
+            Check is a key is present in the Dictionary
+            </summary>
+            <param name="key">to be looked up</param>
+            <returns>true if present</returns>
+        </member>
+        <member name="T:Neo.Collections.IList">
+            <summary>
+            Represents a non-generic collection of objects that can be individually accessed by index
+            </summary>
+        </member>
+        <member name="M:Neo.Collections.IList.HasItemAt(System.Int32)">
+            <summary>
+            Checks if a non-null value is present at the index
+            </summary>
+            <param name="index">to be checked</param>
+            <returns>True if a non-null exists at the index</returns>
+        </member>
+        <member name="T:Neo.Collections.IList`1">
+            <summary>
+            Represents a collection of objects that can be individually accessed by index
+            </summary>
+            <typeparam name="T">The type of elements in the list</typeparam>
+        </member>
+        <member name="M:Neo.Collections.IList`1.FindAll(System.Predicate{`0})">
+            <summary>
+            Returns a new list which all members which match the predicate.
+            </summary>
+            <param name="func">to check each member</param>
+            <returns>a filtered list</returns>
+        </member>
+        <member name="M:Neo.Collections.IList`1.FindAll(System.Func{`0,System.Int32,System.Boolean})">
+            <summary>
+            Returns a new list which all members which match the predicate.
+            </summary>
+            <param name="func">to check each member with it's index</param>
+            <returns>a filtered list</returns>
+        </member>
+        <member name="T:Neo.Collections.ISet`1">
+            <summary>
+            A set is a collection which allows a single member to only be
+            included exactly once
+            </summary>
+            <typeparam name="T">The type of elements in the set</typeparam>
+        </member>
+        <member name="M:Neo.Collections.ISet`1.AddAll(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Tries to add every item
+            </summary>
+            <param name="toAdd">items to add</param>
+        </member>
+        <member name="M:Neo.Collections.ISet`1.RemoveAll(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Tries to remove every given item
+            </summary>
+            <param name="toRemove">items to remove</param>
+        </member>
+        <member name="M:Neo.Collections.ISet`1.ForEach(System.Action{`0})">
+            <summary>
+            Iterates over the members
+            </summary>
+            <param name="func">to be called per member</param>
+        </member>
+        <member name="M:Neo.Collections.ISet`1.Find(System.Predicate{`0})">
+            <summary>
+            Finds the first member in the set which matches the predicate
+            </summary>
+            <param name="func">to check the members</param>
+            <returns>The first match</returns>
+        </member>
+        <member name="M:Neo.Collections.ISet`1.FindAll(System.Predicate{`0})">
+            <summary>
+            Gather a new set containing all matching members
+            </summary>
+            <param name="func">to check each member</param>
+            <returns>A new set</returns>
+        </member>
+        <member name="P:Neo.Collections.ISet`1.Capacity">
+            <summary>
+            Current capacity of the set
+            </summary>
+        </member>
+        <member name="T:Neo.Collections.List`1">
+            <summary>
+            This subclasses the default generic list class
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Neo.Collections.List`1.#ctor">
+            <summary>
+            Instantiate a new list with default capacity
+            </summary>
+        </member>
+        <member name="M:Neo.Collections.List`1.#ctor(System.Int32)">
+            <summary>
+            Instiantiate a new list with desired capacity
+            </summary>
+            <param name="capacity">to use</param>
+        </member>
+        <member name="M:Neo.Collections.List`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Instiate a new list using all members of the given IEnumerable
+            </summary>
+            <param name="initial">to use as initial members</param>
+        </member>
+        <member name="M:Neo.Collections.List`1.ForEach(System.Action{`0})">
+            <summary>
+            Iterates over the collection and calls the func for each member
+            </summary>
+            <remarks>
+            This must be a hard override as the native ForEach function might break on iOS after AOT compilation
+            </remarks>
+            <param name="func">to be called per member</param>
+        </member>
+        <member name="M:Neo.Collections.List`1.ForEach(System.Action{`0,System.Int32})">
+            <summary>
+            Iterates over the collection and calls the func for each member
+            </summary>
+            <param name="func">to be called per member with it's index</param>
+        </member>
+        <member name="M:Neo.Collections.List`1.FindAll(System.Predicate{`0})">
+            <summary>
+            Returns a new list which all members which match the predicate.
+            </summary>
+            <remarks>
+            This must be a hard override as the native ForEach function might break on iOS after AOT compilation
+            </remarks>
+            <param name="func">to check each member</param>
+            <returns>a filtered list</returns>
+        </member>
+        <member name="M:Neo.Collections.List`1.FindAll(System.Func{`0,System.Int32,System.Boolean})">
+            <summary>
+            Returns a new list which all members which match the predicate.
+            </summary>
+            <param name="func">to check each member with it's index</param>
+            <returns>a filtered list</returns>
+        </member>
+        <member name="M:Neo.Collections.List`1.ConvertAll``1(System.Converter{`0,``0})">
+            <summary>
+            Returns a new list by converting each member using the converter
+            </summary>
+            <remarks>
+            This must be a hard override as the native ForEach function might break on iOS after AOT compilation
+            </remarks>
+            <typeparam name="TOutput">of converter's result</typeparam>
+            <param name="converter">to convert each member</param>
+            <returns>a converted list</returns>
+        </member>
+        <member name="M:Neo.Collections.List`1.Find(System.Predicate{`0})">
+            <summary>
+            Finds the first member which matches the predicate
+            </summary>
+            <remarks>
+            This must be a hard override as the native ForEach function might break on iOS after AOT compilation
+            </remarks>
+            <param name="func">to check the members</param>
+            <returns>A single value or default</returns>
+        </member>
+        <member name="P:Neo.Collections.List`1.IsEmpty">
+            <summary>
+            True if the collection is empty
+            </summary>
+        </member>
+        <member name="P:Neo.Collections.List`1.First">
+            <summary>
+            The first member or default
+            </summary>
+        </member>
+        <member name="P:Neo.Collections.List`1.Last">
+            <summary>
+            The last member or default
+            </summary>
+        </member>
+        <member name="P:Neo.Collections.List`1.AsCompact">
+            <summary>
+            Retruns a new list but omits all null values
+            </summary>
+        </member>
+        <member name="M:Neo.Collections.List`1.Splice(System.Int32,System.Int32)">
+            <summary>
+            Splices the collection using the bounds
+            </summary>
+            <param name="lower">as lower bound</param>
+            <param name="count">as upper bound</param>
+            <returns>a spliced list</returns>
+        </member>
+        <member name="M:Neo.Collections.List`1.Join(System.String)">
+            <summary>
+            Joins all members into a single string, by calling ToString per member and
+            joining the results usint the separator
+            </summary>
+            <param name="seperator">between member strings</param>
+            <returns>a combined string</returns>
+        </member>
+        <member name="M:Neo.Collections.List`1.Shuffle(System.Random)">
+            <summary>
+            Shuffle the items in the list based on a Fisher-Yates shuffle
+            </summary>
+            <param name="rng">a random source</param>
+        </member>
+        <member name="M:Neo.Collections.List`1.HasItemAt(System.Int32)">
+            <summary>
+            Checks if a non-null value is present at the index
+            </summary>
+            <param name="index">to be checked</param>
+            <returns>True if a non-null exists at the index</returns>
+        </member>
+        <member name="M:Neo.Collections.List`1.op_Addition(Neo.Collections.List{`0},Neo.Collections.List{`0})">
+            <summary>
+            Builds a new combined list. 
+            </summary>
+            <param name="one">first members in new list</param>
+            <param name="two">second members in new list</param>
+            <returns>a combined list</returns>
+        </member>
+        <member name="M:Neo.Collections.List`1.op_Subtraction(Neo.Collections.List{`0},Neo.Collections.List{`0})">
+            <summary>
+            Builds a new list returning all members from the first list
+            which are not present in the second list.
+            </summary>
+            <param name="one">member to use</param>
+            <param name="two">member not to use</param>
+            <returns>a reduced list</returns>
+        </member>
+        <member name="T:Neo.Collections.NameValueCollection">
+            <summary>
+            A typical Name-Value-Collection
+            </summary>
+        </member>
+        <member name="M:Neo.Collections.NameValueCollection.ForEach(System.Action{System.String,System.String})">
+            <summary>
+            Iterates over the members
+            </summary>
+            <param name="func">to be called per member</param>
+        </member>
+        <member name="M:Neo.Collections.NameValueCollection.ForEach(System.Action{System.String,System.String,System.Int32})">
+            <summary>
+            Iterates over the members and their indexes
+            </summary>
+            <param name="func">to be called per member and index</param>
+        </member>
+        <member name="P:Neo.Collections.NameValueCollection.IsEmpty">
+            <summary>
+            Is the collection empty?
+            </summary>
+        </member>
+        <member name="T:Neo.Collections.Queue`1">
+            <summary>
+            A generic implemenation of a queue
+            </summary>
+            <typeparam name="T">of items</typeparam>
+        </member>
+        <member name="M:Neo.Collections.Queue`1.#ctor">
+            <summary>
+            Instantiate a new queue with default capacity
+            </summary>
+        </member>
+        <member name="M:Neo.Collections.Queue`1.#ctor(System.Int32)">
+            <summary>
+            Instiantiate a new queue with desired capacity
+            </summary>
+            <param name="capacity">to use</param>
+        </member>
+        <member name="M:Neo.Collections.Queue`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Instiate a new queue using all members of the given IEnumerable
+            </summary>
+            <param name="initial">to use as initial members</param>
+        </member>
+        <member name="M:Neo.Collections.Queue`1.Add(`0)">
+            <summary>
+            This is a enqueue operation
+            </summary>
+            <param name="item">to be added at the end of the queue</param>
+        </member>
+        <member name="M:Neo.Collections.Queue`1.Remove(`0)">
+            <summary>
+            Removes the first occurance of the item from the queue. (This is a NOT a dequeue operation)
+            </summary>
+            <param name="item">to be removed</param>
+            <returns>true if the item was a member</returns>
+        </member>
+        <member name="P:Neo.Collections.Queue`1.First">
+            <summary>
+            Returns the first item of the queue
+            </summary>
+        </member>
+        <member name="P:Neo.Collections.Queue`1.Last">
+            <summary>
+            Returns the last item of the queue
+            </summary>
+        </member>
+        <member name="M:Neo.Collections.Queue`1.Dequeue">
+            <summary>
+            Dequeues the frist item of the queue
+            </summary>
+            <returns>the former first item</returns>
+        </member>
+        <member name="P:Neo.Collections.Queue`1.Count">
+            <summary>
+            Number of members in the queue
+            </summary>
+        </member>
+        <member name="P:Neo.Collections.Queue`1.Capacity">
+            <summary>
+            Current capacity of the queue
+            </summary>
+        </member>
+        <member name="P:Neo.Collections.Queue`1.IsReadOnly">
+            <summary>
+            True if it's a readonly collection
+            </summary>
+        </member>
+        <member name="M:Neo.Collections.Queue`1.ForEach(System.Action{`0})">
+            <summary>
+            Iterates over the members
+            </summary>
+            <param name="func">to be called per member</param>
+        </member>
+        <member name="M:Neo.Collections.Queue`1.ForEach(System.Action{`0,System.Int32})">
+            <summary>
+            Iterates over the members and their indexes
+            </summary>
+            <param name="func">to be called per member and index</param>
+        </member>
+        <member name="M:Neo.Collections.Queue`1.Clear">
+            <summary>
+            Clears the whole queue
+            </summary>
+        </member>
+        <member name="M:Neo.Collections.Queue`1.Contains(`0)">
+            <summary>
+            Detects if the queues contains the item
+            </summary>
+            <param name="item">to be looked up</param>
+            <returns>true if the item is a member</returns>
+        </member>
+        <member name="M:Neo.Collections.Queue`1.CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies the content into an array started at the index
+            </summary>
+            <param name="array">target array</param>
+            <param name="index">to start at</param>
+        </member>
+        <member name="M:Neo.Collections.Queue`1.CopyTo(`0[])">
+            <summary>
+            Copies the content into an array
+            </summary>
+            <param name="array">target array</param>
+        </member>
+        <member name="M:Neo.Collections.Queue`1.System#Collections#Generic#IEnumerable{T}#GetEnumerator">
+            <summary>
+            Returns an enumerator, in index order, that can be used to iterate over the queue
+            </summary>
+            <returns>An enumerator for the list</returns>
+        </member>
+        <member name="M:Neo.Collections.Queue`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator, in index order, that can be used to iterate over the queue
+            </summary>
+            <returns>An enumerator for the list</returns>
+        </member>
+        <member name="P:Neo.Collections.Queue`1.IsEmpty">
+            <summary>
+            Is the collection empty?
+            </summary>
+        </member>
+        <member name="T:Neo.Collections.Set`1">
+            <summary>
+            A set is a collection which allows a single member to only be
+            included exactly once.
+            </summary>
+            <typeparam name="T">of items</typeparam>
+        </member>
+        <member name="M:Neo.Collections.Set`1.#ctor">
+            <summary>
+            Instantiate a new set with default capacity
+            </summary>
+        </member>
+        <member name="M:Neo.Collections.Set`1.#ctor(System.Int32)">
+            <summary>
+            Instiantiate a new set with desired capacity
+            </summary>
+            <param name="capacity">to use</param>
+        </member>
+        <member name="M:Neo.Collections.Set`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Instiate a new queue using all members of the given IEnumerable
+            </summary>
+            <param name="initial">to use as initial members</param>
+        </member>
+        <member name="P:Neo.Collections.Set`1.Count">
+            <summary>
+            Number of members in the set
+            </summary>
+        </member>
+        <member name="P:Neo.Collections.Set`1.IsEmpty">
+            <summary>
+            Is the collection empty?
+            </summary>
+        </member>
+        <member name="P:Neo.Collections.Set`1.IsReadOnly">
+            <summary>
+            True if it's a readonly collection
+            </summary>
+        </member>
+        <member name="P:Neo.Collections.Set`1.Capacity">
+            <summary>
+            Current capacity of the set
+            </summary>
+        </member>
+        <member name="P:Neo.Collections.Set`1.Item(System.Int32)">
+            <summary>
+            Gets or sets the element at the specified index of the current instance
+            </summary>
+            <param name="index">The zero-based index of the element in the current instance to get or set</param>
+            <returns>The element at the specified index of the current instance</returns>
+        </member>
+        <member name="M:Neo.Collections.Set`1.AddAll(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Tries to add every item
+            </summary>
+            <param name="toAdd">items to add</param>
+        </member>
+        <member name="M:Neo.Collections.Set`1.RemoveAll(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Tries to remove every given item
+            </summary>
+            <param name="toRemove">items to remove</param>
+        </member>
+        <member name="M:Neo.Collections.Set`1.Add(`0)">
+            <summary>
+            Adds an item to the set
+            </summary>
+            <param name="item">to add</param>
+        </member>
+        <member name="M:Neo.Collections.Set`1.TryAdd(`0)">
+            <summary>
+            Adds an item to the set
+            </summary>
+            <param name="item">to add</param>
+            <returns>True if wasn't previously in the collection</returns>
+        </member>
+        <member name="M:Neo.Collections.Set`1.Remove(`0)">
+            <summary>
+            Removes an item
+            </summary>
+            <param name="item">to remove</param>
+            <returns>true if the item was a member</returns>
+        </member>
+        <member name="M:Neo.Collections.Set`1.ForEach(System.Action{`0})">
+            <summary>
+            Iterates over the members
+            </summary>
+            <param name="func">to be called per member</param>
+        </member>
+        <member name="M:Neo.Collections.Set`1.Find(System.Predicate{`0})">
+            <summary>
+            Finds the first member in the set which matches the predicate
+            </summary>
+            <param name="func">to check the members</param>
+            <returns>The first match</returns>
+        </member>
+        <member name="M:Neo.Collections.Set`1.FindAll(System.Predicate{`0})">
+            <summary>
+            Gather a new set containing all matching members
+            </summary>
+            <param name="func">to check each member</param>
+            <returns>A new set</returns>
+        </member>
+        <member name="M:Neo.Collections.Set`1.Clear">
+            <summary>
+            Clears the whole set
+            </summary>
+        </member>
+        <member name="M:Neo.Collections.Set`1.Contains(`0)">
+            <summary>
+            Detects if the set contains the item
+            </summary>
+            <param name="item">to be looked up</param>
+            <returns>true if the item is a member</returns>
+        </member>
+        <member name="M:Neo.Collections.Set`1.CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies the content into an array started at the index
+            </summary>
+            <param name="array">target array</param>
+            <param name="index">to start at</param>
+        </member>
+        <member name="M:Neo.Collections.Set`1.CopyTo(`0[])">
+            <summary>
+            Copies the content into an array
+            </summary>
+            <param name="array">target array</param>
+        </member>
+        <member name="M:Neo.Collections.Set`1.System#Collections#Generic#IEnumerable{T}#GetEnumerator">
+            <summary>
+            Returns an enumerator, in index order, that can be used to iterate over the queue
+            </summary>
+            <returns>An enumerator for the list</returns>
+        </member>
+        <member name="M:Neo.Collections.Set`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator, in index order, that can be used to iterate over the queue
+            </summary>
+            <returns>An enumerator for the list</returns>
+        </member>
+        <member name="M:Neo.Collections.Set`1.op_Addition(Neo.Collections.Set{`0},Neo.Collections.Set{`0})">
+            <summary>
+            Builds a new set by addition (UNION)
+            </summary>
+            <param name="one">first set</param>
+            <param name="two">second set</param>
+            <returns>A union of both sets</returns>
+        </member>
+        <member name="M:Neo.Collections.Set`1.op_Subtraction(Neo.Collections.Set{`0},Neo.Collections.Set{`0})">
+            <summary>
+            Builds a new set by substraction
+            </summary>
+            <param name="one">first set</param>
+            <param name="two">to substract</param>
+            <returns>All members form one which are not in two</returns>
+        </member>
+        <member name="M:Neo.Collections.Set`1.IntersectWith(Neo.Collections.Set{`0})">
+            <summary>
+            Builds a new set by intersection
+            </summary>
+            <param name="other">to intersect</param>
+            <returns>A intersection of both</returns>
+        </member>
+        <member name="M:Neo.Collections.Set`1.Intersect(Neo.Collections.Set{`0},Neo.Collections.Set{`0})">
+            <summary>
+            Builds a new set by intersection
+            </summary>
+            <param name="one">first set</param>
+            <param name="two">second set</param>
+            <returns>A intersection of both</returns>
+        </member>
+        <member name="T:Neo.Collections.Stack`1">
+            <summary>
+            A generic implementation of a stack
+            </summary>
+            <typeparam name="T">of items</typeparam>
+        </member>
+        <member name="M:Neo.Collections.Stack`1.#ctor">
+            <summary>
+            Instantiate a new stack with default capacity
+            </summary>
+        </member>
+        <member name="M:Neo.Collections.Stack`1.#ctor(System.Int32)">
+            <summary>
+            Instiantiate a new stack with desired capacity
+            </summary>
+            <param name="capacity">to use</param>
+        </member>
+        <member name="M:Neo.Collections.Stack`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Instiate a new stack using all members of the given IEnumerable
+            </summary>
+            <param name="initial">to use as initial members</param>
+        </member>
+        <member name="M:Neo.Collections.Stack`1.Add(`0)">
+            <summary>
+            Push a new item onto the stack
+            </summary>
+            <param name="item">to be pushed to the stack</param>
+        </member>
+        <member name="M:Neo.Collections.Stack`1.Remove(`0)">
+            <summary>
+            Removes the first occurance of the item from the queue. (This is NOT a pop operation)
+            </summary>
+            <param name="item">to be removed</param>
+            <returns>true if the item was a member</returns>
+        </member>
+        <member name="P:Neo.Collections.Stack`1.Peek">
+            <summary>
+            Peeks the top of the stack
+            </summary>
+        </member>
+        <member name="M:Neo.Collections.Stack`1.Pop">
+            <summary>
+            Pops the top item from the stack
+            </summary>
+            <returns>the former top item</returns>
+        </member>
+        <member name="P:Neo.Collections.Stack`1.Count">
+            <summary>
+            Number of members in the stack
+            </summary>
+        </member>
+        <member name="P:Neo.Collections.Stack`1.Capacity">
+            <summary>
+            Current capacity of the stack
+            </summary>
+        </member>
+        <member name="P:Neo.Collections.Stack`1.IsReadOnly">
+            <summary>
+            True if it's a readonly collection
+            </summary>
+        </member>
+        <member name="M:Neo.Collections.Stack`1.ForEach(System.Action{`0})">
+            <summary>
+            Iterates over the members
+            </summary>
+            <param name="func">to be called per member</param>
+        </member>
+        <member name="M:Neo.Collections.Stack`1.ForEach(System.Action{`0,System.Int32})">
+            <summary>
+            Iterates over the members and their indexes
+            </summary>
+            <param name="func">to be called per member and index</param>
+        </member>
+        <member name="M:Neo.Collections.Stack`1.Clear">
+            <summary>
+            Clears the whole stack
+            </summary>
+        </member>
+        <member name="M:Neo.Collections.Stack`1.Contains(`0)">
+            <summary>
+            Detects if the stack contains the item
+            </summary>
+            <param name="item">to be looked up</param>
+            <returns>true if the item is a member</returns>
+        </member>
+        <member name="M:Neo.Collections.Stack`1.CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies the content into an array started at the index
+            </summary>
+            <param name="array">target array</param>
+            <param name="index">to start at</param>
+        </member>
+        <member name="M:Neo.Collections.Stack`1.CopyTo(`0[])">
+            <summary>
+            Copies the content into an array
+            </summary>
+            <param name="array">target array</param>
+        </member>
+        <member name="M:Neo.Collections.Stack`1.System#Collections#Generic#IEnumerable{T}#GetEnumerator">
+            <summary>
+            Returns an enumerator, in index order, that can be used to iterate over the stack
+            </summary>
+            <returns>An enumerator for the list</returns>
+        </member>
+        <member name="M:Neo.Collections.Stack`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator, in index order, that can be used to iterate over the queue
+            </summary>
+            <returns>An enumerator for the list</returns>
+        </member>
+        <member name="P:Neo.Collections.Stack`1.IsEmpty">
+            <summary>
+            Is the collection empty?
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Text;
 using Neo.Collections;
+using UnityEngine.Networking;
 
 namespace Neo.Network {
   /// <summary>
@@ -236,7 +237,7 @@ namespace Neo.Network {
     /// <param name="s">to escape</param>
     /// <returns>Escaped value</returns>
     public static string UrlEscape(string s) {
-      return UnityEngine.WWW.EscapeURL(s);
+      return UnityWebRequest.EscapeURL(s);
     }
 
     /// <summary>
@@ -245,7 +246,7 @@ namespace Neo.Network {
     /// <param name="s">to unescape</param>
     /// <returns>Unescaped value</returns>
     public static string UrlUnescape(string s) {
-      return UnityEngine.WWW.UnEscapeURL(s);
+      return UnityWebRequest.UnEscapeURL(s);
     }
   }
 }
