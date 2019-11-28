@@ -116,10 +116,11 @@
             <summary>
             Returns a new array by converting each member using the converter
             </summary>
-            <typeparam name="TOutput">of converter's result</typeparam>
-            <param name="array">to be converted</param>
-            <param name="func">to convert each member</param>
-            <returns>a converted array</returns>
+            <returns>The all.</returns>
+            <param name="array">Array.</param>
+            <param name="func">Func.</param>
+            <typeparam name="T">The type of the array</typeparam>
+            <typeparam name="TOutput">The converter's result</typeparam>
         </member>
         <member name="M:ArrayExtensions.ConvertAll``1(System.Int32[],System.Func{System.Int32,``0})">
             <summary>
