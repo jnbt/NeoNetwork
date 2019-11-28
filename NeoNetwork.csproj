@@ -32,11 +32,13 @@
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>Temp\bin\Release\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>obj\Release\NeoNetwork.xml</DocumentationFile>
     <NoWarn>0169</NoWarn>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
@@ -56,6 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\NeoNetwork\AssemblyInfo.cs" />
      <Compile Include="Assets\NeoNetwork\Http\Client.cs" />
      <Compile Include="Assets\NeoNetwork\Http\CookieJar.cs" />
      <Compile Include="Assets\NeoNetwork\Http\FinishCallback.cs" />
