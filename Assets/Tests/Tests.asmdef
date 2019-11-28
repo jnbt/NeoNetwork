@@ -1,16 +1,23 @@
 {
     "name": "Tests",
     "references": [
-        "NeoNetwork"
-    ],
-    "optionalUnityReferences": [
-        "TestAssemblies"
+        "NeoNetwork",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
-    "defineConstraints": []
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "NeoCollections.dll",
+        "NeoAsync.dll",
+        "NeoLogging.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": []
 }
